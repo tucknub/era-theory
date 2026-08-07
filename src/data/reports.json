@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "reports": [
+    {
+      "number": "001",
+      "slug": "colts",
+      "title": "Colts Era Lab",
+      "sport": "Football",
+      "league": "NFL",
+      "subject": "Indianapolis Colts",
+      "subtitle": "Polian vs. Grigson vs. Ballard",
+      "status": "published",
+      "route": "reports/colts/index.html",
+      "methodologyRoute": "research/index.html",
+      "scoringCutoff": "Completed seasons through 2025",
+      "lastCompletedSeason": 2025,
+      "researchVisibility": "private",
+      "finalLeader": "Bill Polian",
+      "finalScore": 70.5,
+      "dimensions": 7,
+      "coreEvidenceRecords": 401,
+      "randomWeightSimulations": 300000,
+      "requiredMarkers": [
+        "Final weighted verdict",
+        "The Ballard contradiction",
+        "Sensitivity lab"
+      ]
+    }
+  ]
+}
