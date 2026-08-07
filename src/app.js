@@ -9,9 +9,9 @@ const dimensions = [
 ];
 
 const eras = [
-  { id: 'polian', name: 'Bill Polian', score: 70.5, values: [68.3, 48.2, 95.7, 75.4, 66.2, 80.5, 70.1], color: '#62b5ff' },
-  { id: 'grigson', name: 'Ryan Grigson', score: 61.1, values: [60.9, 35.0, 85.6, 59.6, 64.3, 65.8, 81.2], color: '#b7c2cf' },
-  { id: 'ballard', name: 'Chris Ballard', score: 47.8, values: [46.5, 7.8, 45.7, 73.2, 74.5, 68.1, 49.8], color: '#1769e0' }
+  { id: 'polian', name: 'Bill Polian', score: 70.5, values: [68.25892857142857, 48.21428571428571, 95.71428571428572, 75.3651948051948, 66.18928571428572, 80.5, 70.1], color: '#62b5ff' },
+  { id: 'grigson', name: 'Ryan Grigson', score: 61.1, values: [60.875, 35.0, 85.625, 59.62138835725677, 64.26764705882353, 65.8, 81.2], color: '#b7c2cf' },
+  { id: 'ballard', name: 'Chris Ballard', score: 47.8, values: [46.454138702460845, 7.777777777777777, 45.71282679738562, 73.17626804482067, 74.47678571428571, 68.12222222222222, 49.81], color: '#1769e0' }
 ];
 
 const scenarioWeights = {
@@ -20,7 +20,7 @@ const scenarioWeights = {
   evaluator: { label: 'Talent evaluator', weights: [10, 10, 10, 30, 25, 10, 5] },
   qb: { label: 'QB and stability', weights: [15, 15, 30, 10, 10, 10, 10] },
   sustainable: { label: 'Sustainable organization', weights: [15, 15, 15, 15, 10, 20, 10] },
-  equal: { label: 'Equal weight', weights: [14.2857, 14.2857, 14.2857, 14.2857, 14.2857, 14.2857, 14.2857] },
+  equal: { label: 'Equal weight', weights: [14.285714285714286, 14.285714285714286, 14.285714285714286, 14.285714285714286, 14.285714285714286, 14.285714285714286, 14.285714285714286] },
   draftOnly: { label: 'Drafting + transactions only', weights: [0, 0, 0, 50, 50, 0, 0] },
   resilienceOnly: { label: 'Roster + resilience only', weights: [0, 0, 0, 0, 50, 0, 50] }
 };
