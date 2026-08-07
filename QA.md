@@ -2,7 +2,7 @@
 
 ## Scope
 
-The prototype has two routes:
+The production repository has two routes:
 
 - `/` — Era Theory umbrella homepage and report library
 - `/reports/colts/` — Colts Era Lab interactive report
@@ -48,6 +48,13 @@ Verified:
 - Relative route and asset checks
 - Homepage, report, and interaction markers
 
+## Repository verification
+
+- Release imported into `tucknub/era-theory` at the repository root.
+- Import workflow completed successfully and was removed afterward.
+- `.github/workflows/validate.yml` now rebuilds and verifies every push and pull request.
+- `.github/workflows/deploy-cloudflare.yml` is ready for authenticated manual deployment.
+
 ## Publication status
 
-The code is release-ready. A dedicated repository and authenticated hosting target remain infrastructure requirements, not product or QA defects.
+The code and repository are release-ready. Public hosting now requires only the Cloudflare account ID and a Pages-edit API token to be added as GitHub Actions secrets.
