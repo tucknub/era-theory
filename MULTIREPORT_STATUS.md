@@ -5,7 +5,10 @@
 - Colts Era Lab route: complete
 - Shared report framework: complete
 - Future report template: complete
-- Dedicated repository: blocked by unavailable repository-creation tooling
-- Public deployment: pending dedicated repository or deployment target
+- Dedicated repository: complete — `tucknub/era-theory`
+- Repository-root release transfer: complete
+- Continuous build verification: configured
+- Cloudflare Pages deployment workflow: configured
+- Public deployment: pending Cloudflare repository secrets
 
-The prototype remains isolated under `prototypes/era-theory` and does not modify Belt Theory production files.
+Era Theory is now fully separated from Belt Theory. The temporary Belt Theory branch and pull request are no longer part of the release path.
