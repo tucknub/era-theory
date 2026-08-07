@@ -7,11 +7,12 @@ Era Theory is a reusable sports-leadership analysis site. It turns complete rese
 - `/` — Era Theory umbrella homepage and report library
 - `/reports/colts/` — Report 001: Colts Era Lab
 - `/research/` — public methodology, evidence inventory, source policy and limitations
-- `REPORT_TEMPLATE.md` — requirements and route rules for future reports
+- `src/data/reports.json` — publication-safe registry of live reports
+- `REPORT_TEMPLATE.md` — research, privacy and publication rules for future reports
 
 ## Report 001: Colts Era Lab
 
-The completed 1998–2025 Indianapolis Colts front-office study compares Bill Polian, Ryan Grigson, and Chris Ballard.
+The completed 1998–2025 Indianapolis Colts front-office study compares Bill Polian, Ryan Grigson and Chris Ballard.
 
 - Bill Polian: 70.5
 - Ryan Grigson: 61.1
@@ -21,26 +22,29 @@ The completed 1998–2025 Indianapolis Colts front-office study compares Bill Po
 - Seven weighted dimensions
 - 300,000 random-weight robustness simulations
 - Interactive sensitivity model
-- Quarterback, draft, transaction, coaching, player-peak, and resilience chapters
+- Quarterback, draft, transaction, coaching, player-peak and resilience chapters
 
 ## Research privacy and transparency
 
 The complete native Google Sheets workbook remains the private evidence base. It is intentionally not published as an unrestricted public file.
 
-Public transparency is provided through `/research/`, which publishes:
+The public `/research/` route publishes the research scope, evidence-register counts, model construction, robustness tests, source families, exclusions and known limitations. Production verification rejects private-workbook Google Sheets links when a report is marked `researchVisibility: "private"`.
 
-- research scope and cutoffs
-- evidence-register counts
-- category weights and construction rules
-- robustness tests
-- source families and source policy
-- unresolved evidence and known limitations
+## Starting another Era Theory report
 
-This preserves an auditable public methodology while protecting the organized research database itself.
+Create a private local research workbench:
+
+```bash
+npm run new-report -- --number=002 --slug=example --title="Example Era Lab" --sport="Basketball"
+```
+
+The command creates `workbench/<slug>/` with a manifest and research checklist. `workbench/` is ignored by Git and is outside `src/`, so it cannot be published by the normal production build.
+
+A report is added to `src/data/reports.json` only when it is publication-ready. The build validates registry uniqueness and route safety; the verification script automatically checks every registered published report.
 
 ## Visual policy
 
-The production site does not use AI-generated lookalikes of real people or synthetic documentary imagery. Generated material may support abstract atmosphere, textures, maps, diagrams, and data visualization. Any future real-person or historical-event photography must be authentic and appropriately licensed or sourced.
+The production site does not use AI-generated lookalikes of real people or synthetic documentary imagery. Generated material may support abstract atmosphere, textures, maps, diagrams and data visualization. Any future real-person or historical-event photography must be authentic and appropriately licensed or sourced.
 
 ## Local use
 
@@ -50,7 +54,7 @@ npm run verify
 npm run start
 ```
 
-Open `http://localhost:4173` for the homepage, `http://localhost:4173/reports/colts/` for Report 001, and `http://localhost:4173/research/` for the public research audit.
+Open `http://localhost:4173` for the homepage, `http://localhost:4173/reports/colts/` for Report 001 and `http://localhost:4173/research/` for the public research audit.
 
 ## Deployment
 
