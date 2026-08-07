@@ -6,6 +6,7 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "verify": "node scripts/verify.mjs",
+    "new-report": "node scripts/new-report.mjs",
     "start": "python3 -m http.server 4173 -d dist"
   }
 }
