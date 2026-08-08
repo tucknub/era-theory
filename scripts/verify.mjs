@@ -8,7 +8,7 @@ const files = await readdir(dist);
 
 for (const required of [
   'index.html', 'home.css', 'home.js', 'styles.css', 'app.js',
-  'favicon.svg', 'site.webmanifest', 'sitemap.xml', 'robots.txt', '404.html', '_headers'
+  'favicon.svg', 'site.webmanifest', 'sitemap.xml', 'robots.txt', '404.html', '_headers', 'image-credits.html'
 ]) {
   if (!files.includes(required)) throw new Error(`Missing ${required}`);
 }
@@ -22,6 +22,20 @@ const robots = await readFile(resolve(dist, 'robots.txt'), 'utf8');
 const headers = await readFile(resolve(dist, '_headers'), 'utf8');
 const notFound = await readFile(resolve(dist, '404.html'), 'utf8');
 const manifest = JSON.parse(await readFile(resolve(dist, 'site.webmanifest'), 'utf8'));
+const coltsArchive = JSON.parse(await readFile(resolve(dist, 'assets', 'archive', 'colts-manifest.json'), 'utf8'));
+const imageCredits = await readFile(resolve(dist, 'image-credits.html'), 'utf8');
+
+if (!Array.isArray(coltsArchive.assets) || coltsArchive.assets.length !== 5) {
+  throw new Error(`Expected 5 approved Colts archive assets; found ${coltsArchive.assets?.length ?? 0}.`);
+}
+for (const asset of coltsArchive.assets) {
+  if (asset.status !== 'approved') throw new Error(`Non-approved asset entered public archive: ${asset.id}`);
+  if (!asset.localSrc?.startsWith('/assets/archive/')) throw new Error(`Archive asset lacks local source: ${asset.id}`);
+  await stat(resolve(dist, asset.localSrc.replace(/^\//, '')));
+  if (!imageCredits.includes(asset.id) || !imageCredits.includes(asset.sourcePage) || !imageCredits.includes(asset.license)) {
+    throw new Error(`Image credits missing rights metadata for ${asset.id}.`);
+  }
+}
 
 for (const marker of ['Every era leaves evidence.', 'Report library', 'Evidence first. Atmosphere second.', '300,000 model simulations']) {
   if (!home.includes(marker)) throw new Error(`Missing homepage marker: ${marker}`);
@@ -109,7 +123,8 @@ for (const marker of ['scenarioWeights', 'renderRadar', 'renderScorecards', '68.
 
 for (const marker of [
   `<loc>${baseUrl}/</loc>`,
-  `<loc>${baseUrl}/research/</loc>`
+  `<loc>${baseUrl}/research/</loc>`,
+  `<loc>${baseUrl}/image-credits.html</loc>`
 ]) {
   if (!sitemap.includes(marker)) throw new Error(`Sitemap missing URL: ${marker}`);
 }
@@ -137,6 +152,8 @@ for (const htmlPath of await collectHtml(dist)) {
   if (/docs\.google\.com\/spreadsheets/i.test(html)) {
     throw new Error(`Production HTML exposes a private Google Sheets workbook: ${htmlPath}`);
   }
+  const remoteImg = html.match(/<img\b[^>]*\bsrc=["']https?:\/\//i);
+  if (remoteImg) throw new Error(`Production HTML hotlinks an image instead of using the authentic archive: ${htmlPath}`);
 }
 
-console.log(`Verification passed: homepage registry, ${published.length} registered report${published.length === 1 ? '' : 's'}, public methodology, privacy guards, full-precision model inputs, canonical metadata, sitemap, robots, favicon, 404, manifest, security headers, assets, sections, and interactions are present.`);
+console.log(`Verification passed: homepage registry, ${published.length} registered report${published.length === 1 ? '' : 's'}, public methodology, privacy guards, full-precision model inputs, ${coltsArchive.assets.length} rights-approved self-hosted Colts images, image credits, hotlink rejection, canonical metadata, sitemap, robots, favicon, 404, manifest, security headers, assets, sections, and interactions are present.`);
