@@ -72,6 +72,8 @@ The photographed person must not be generated, redrawn, face-swapped or reconstr
 
 The Colts implementation includes a rights ledger, archive manifest, generated public image credits, self-hosted archived source files and a permanent authentic-cutout guard.
 
+**Approved production direction (2026-08-08):** fan-first guided storytelling with authentic real-person source photography and background-removed/cutout presentation. This replaces generated-person concepts and framed-photo layouts as the default Era Theory standard.
+
 ## Research privacy and transparency
 
 The complete native research workbook remains the private evidence base. It is intentionally not published as an unrestricted public file.
