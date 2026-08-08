@@ -125,8 +125,16 @@ for (const reportMeta of published) {
   if (!sitemap.includes(`<loc>${publicUrl(reportMeta.route)}</loc>`)) throw new Error(`Sitemap missing report ${reportMeta.number}.`);
 }
 
-for (const marker of ['Methodology without giving away the vault.', '401', '300,000', 'Private workbook policy', 'research-mobile-nav']) {
-  if (!research.includes(marker)) throw new Error(`Missing research marker: ${marker}`);
+for (const marker of [
+  'How do we know?',
+  'Five steps. That is the whole idea.',
+  '401 / 401',
+  'Seven football questions. Results matter most.',
+  'Every core evidence row has a source.',
+  'Why isn\'t the entire workbook public?',
+  'research-mobile-nav'
+]) {
+  if (!research.includes(marker)) throw new Error(`Missing fan-first research marker: ${marker}`);
 }
 for (const marker of ['research-mobile-nav', 'aria-expanded']) {
   if (!researchJs.includes(marker)) throw new Error(`Missing research JS marker: ${marker}`);
@@ -179,4 +187,4 @@ for (const htmlPath of await collectHtml(dist)) {
   }
 }
 
-console.log(`Verification passed: fan-first homepage, guided Colts story, ${published.length} registered report${published.length === 1 ? '' : 's'}, public methodology, full-precision model, ${coltsArchive.assets.length} rights-approved self-hosted Colts images, image credits, hotlink rejection, privacy guards, canonical metadata, sitemap, robots, favicon, 404, manifest and security headers.`);
+console.log(`Verification passed: fan-first homepage, guided Colts story, fan-readable methodology, ${published.length} registered report${published.length === 1 ? '' : 's'}, full-precision model, ${coltsArchive.assets.length} rights-approved self-hosted Colts images, image credits, hotlink rejection, privacy guards, canonical metadata, sitemap, robots, favicon, 404, manifest and security headers.`);
