@@ -5,17 +5,20 @@ const root = resolve(import.meta.dirname, '..');
 const dist = resolve(root, 'dist');
 const reportPath = resolve(dist, 'reports', 'lions', 'index.html');
 const cssPath = resolve(dist, 'reports', 'lions', 'story.css');
+const photoV2Path = resolve(dist, 'reports', 'lions', 'photo-treatment-v2.css');
 const jsPath = resolve(dist, 'reports', 'lions', 'lions.js');
 const methodologyPath = resolve(dist, 'research', 'lions', 'index.html');
 
 await stat(reportPath);
 await stat(cssPath);
+await stat(photoV2Path);
 await stat(jsPath);
 await stat(methodologyPath);
 await stat(resolve(dist, 'assets', 'archive', 'lions-manifest.json'));
 
 const report = await readFile(reportPath, 'utf8');
 const css = await readFile(cssPath, 'utf8');
+const photoV2 = await readFile(photoV2Path, 'utf8');
 const js = await readFile(jsPath, 'utf8');
 const methodology = await readFile(methodologyPath, 'utf8');
 const home = await readFile(resolve(dist, 'index.html'), 'utf8');
@@ -54,6 +57,7 @@ for (const marker of [
   '328 of 328',
   '71.6',
   '../../research/lions/index.html',
+  'photo-treatment-v2.css',
   '/assets/archive/calvin-johnson-lions-2007.jpg',
   '/assets/archive/matthew-stafford-lions-2015.jpg',
   '/assets/archive/jared-goff-lions-2022.jpg',
@@ -61,8 +65,17 @@ for (const marker of [
 ]) {
   if (!report.includes(marker)) throw new Error(`Detroit report missing marker: ${marker}`);
 }
-for (const marker of ['--calvin-cutout', '--stafford-cutout', '--sewell-cutout', 'clip-path:var(--calvin-cutout)', 'clip-path:var(--sewell-cutout)']) {
-  if (!css.includes(marker)) throw new Error(`Detroit authentic-cutout stylesheet missing marker: ${marker}`);
+for (const marker of ['--calvin-cutout', '--stafford-cutout', '--sewell-cutout']) {
+  if (!css.includes(marker)) throw new Error(`Detroit base visual stylesheet missing marker: ${marker}`);
+}
+for (const marker of [
+  '--stafford-cutout-v2',
+  'clip-path: var(--stafford-cutout-v2)',
+  '.lions-calvin-photo',
+  '.holmes-visuals',
+  'complete authentic photographs with soft editorial edge fades'
+]) {
+  if (!photoV2.includes(marker)) throw new Error(`Detroit refined authentic-photo layer missing marker: ${marker}`);
 }
 for (const marker of ['Brad Holmes', '93.84666666666666', 'renderScorecards', 'renderRadar', 'setupSensitivity', 'lions-model-controls']) {
   if (!js.includes(marker)) throw new Error(`Detroit interaction layer missing marker: ${marker}`);
@@ -99,4 +112,4 @@ for (const src of [...report.matchAll(/<img\b[^>]*\bsrc=["']([^"']+)["']/gi)].ma
   }
 }
 
-console.log('Detroit Report 002 verification passed: registry, 71.6 final score, 328 evidence records, 300,000 simulations, dedicated methodology, server-rendered library entry, four approved self-hosted authentic images, cutout treatment, rights credits, privacy guards and interactions are present.');
+console.log('Detroit Report 002 verification passed: registry, 71.6 final score, 328 evidence records, 300,000 simulations, dedicated methodology, server-rendered library entry, four approved self-hosted authentic images, refined real-photo treatment, rights credits, privacy guards and interactions are present.');
