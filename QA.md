@@ -94,7 +94,7 @@ For every major chapter ask:
 
 ## Colts redesign status
 
-The authentic-cutout redesign has passed desktop/mobile visual and interaction QA on the redesign branch. The approved visual direction uses real-photo subject cutouts rather than generated people or framed photo panels.
+The authentic-cutout redesign has passed desktop/mobile visual and interaction QA and is the approved Era Theory production direction as of 2026-08-08. The approved system uses real-photo subject cutouts rather than generated people or framed photo panels.
 
 Official model remains unchanged:
 
