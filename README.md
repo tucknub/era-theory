@@ -123,6 +123,8 @@ The output directory is `dist`.
 - Output directory: `dist`
 - Root directory: `/`
 
+The production Cloudflare Pages project is expected to auto-deploy from `main`. Merge to `main` only after the required browser and static QA passes.
+
 ## Private evidence base
 
 The complete Colts research workbook is retained privately in Google Drive and is not linked as a public raw-data download from the production site.
