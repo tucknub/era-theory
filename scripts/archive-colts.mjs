@@ -1,11 +1,11 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
-import { extname, resolve } from 'node:path';
+import { resolve } from 'node:path';
 
-export async function archiveColtsAssets({ root, dist }) {
-  const manifestPath = resolve(root, 'src', 'data', 'colts-archive.json');
+async function archiveManifest({ root, dist, manifestName, outputName, label }) {
+  const manifestPath = resolve(root, 'src', 'data', manifestName);
   const manifest = JSON.parse(await readFile(manifestPath, 'utf8'));
   if (!Array.isArray(manifest.assets) || manifest.assets.length === 0) {
-    throw new Error('Colts archive manifest contains no assets.');
+    throw new Error(`${label} archive manifest contains no assets.`);
   }
 
   const approved = manifest.assets.filter(asset => asset.status === 'approved');
@@ -33,18 +33,31 @@ export async function archiveColtsAssets({ root, dist }) {
     const bytes = Buffer.from(await response.arrayBuffer());
     if (bytes.length < 10_000) throw new Error(`Archive asset ${asset.id} is unexpectedly small (${bytes.length} bytes).`);
     await writeFile(resolve(archiveDir, filename), bytes);
-    archived.push({
-      ...asset,
-      localSrc: `/assets/archive/${filename}`,
-      bytes: bytes.length
-    });
+    archived.push({ ...asset, localSrc: `/assets/archive/${filename}`, bytes: bytes.length });
   }
 
   await writeFile(
-    resolve(archiveDir, 'colts-manifest.json'),
+    resolve(archiveDir, outputName),
     JSON.stringify({ version: manifest.version, policy: manifest.policy, assets: archived }, null, 2) + '\n'
   );
-
-  console.log(`Archived ${archived.length} rights-approved Colts images.`);
+  console.log(`Archived ${archived.length} rights-approved ${label} images.`);
   return archived;
+}
+
+export async function archiveColtsAssets({ root, dist }) {
+  const colts = await archiveManifest({
+    root,
+    dist,
+    manifestName: 'colts-archive.json',
+    outputName: 'colts-manifest.json',
+    label: 'Colts'
+  });
+  const lions = await archiveManifest({
+    root,
+    dist,
+    manifestName: 'lions-archive.json',
+    outputName: 'lions-manifest.json',
+    label: 'Detroit Lions'
+  });
+  return [...colts, ...lions];
 }
