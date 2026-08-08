@@ -1,60 +1,105 @@
-# Era Theory v2 QA
+# Era Theory QA
 
 ## Scope
 
-The production repository has two routes:
+Current production surfaces:
 
-- `/` — Era Theory umbrella homepage and report library
-- `/reports/colts/` — Colts Era Lab interactive report
+- `/` — Era Theory homepage and story library
+- `/reports/colts/` — Colts Era Lab guided report
+- `/research/` — methodology, evidence inventory, source policy and limitations
+- `/image-credits.html` — authentic imagery rights and transformation records
 
 ## Visual target
 
-The selected direction established a dark navy sports-documentary interface with verdict-first reporting, strong typography, scorecards, comparative charts, timelines, and interactive model testing.
+Era Theory should feel like a premium sports editorial feature, not a research dashboard or old fan site.
 
-## Intentional production deviations
+The selected visual system combines:
 
-- Removed AI-generated lookalikes of Bill Polian, Ryan Grigson, and Chris Ballard.
-- Removed simulated Colts marks and synthetic documentary scenes.
-- Replaced those elements with abstract stadium geometry, Indianapolis-inspired city forms, typography, and data visualization.
-- Authentic licensed/editorial imagery can be added later without changing the page structure.
+- dark navy / Colts-blue editorial design;
+- large fan-first questions and verdicts;
+- authentic photography of real people and historical moments;
+- true subject cutouts / background removal where composition benefits;
+- layered typography, atmosphere and data around the authentic people;
+- technical scorecards and model controls deeper in the page rather than at the entrance.
+
+## Permanent real-person rule
+
+No generated lookalikes or synthetic replacements of real athletes, executives, coaches or historical participants.
+
+Real people remain authentic source photographs. Background pixels may be removed or hidden through segmentation-derived clipping. Crops, masks, tonal treatment, color grade and surrounding design are allowed. The photographed person must not be generated, face-swapped, redrawn or reconstructed.
+
+Current narrative anchors:
+
+- Bill Polian — authentic 2007 photo
+- Peyton Manning — authentic 2010 Indianapolis Colts photo
+- Andrew Luck — authentic September 2014 Colts photo within the Grigson era
+- Jonathan Taylor — authentic 2022 Colts photo
+- Anthony Richardson — authentic 2023 archive/evidence photo
+
+Ryan Grigson and Chris Ballard portrait candidates remain excluded until reusable publication rights are clear.
 
 ## Browser verification
 
-The runtime blocks direct `localhost` navigation, so Playwright Chromium loaded the completed production HTML, CSS, and JavaScript inline for the visual and interaction pass. The shipped files were not altered for testing.
+GitHub Actions runs Chromium/Playwright against the built `dist` site.
 
-Checked viewports:
+Primary viewports:
 
 - Desktop: 1536 × 1000
 - Mobile: 390 × 844
 
-Verified:
+The browser suite checks:
 
-1. Umbrella homepage and Colts report render without JavaScript console errors.
-2. Neither route has horizontal overflow on desktop or mobile.
-3. Homepage mobile navigation opens correctly.
-4. Colts mobile navigation opens correctly.
-5. Methodology dialog opens and closes.
-6. Drafting + transactions stress test selects Chris Ballard.
-7. Roster + resilience stress test selects Ryan Grigson.
-8. Published model loads Bill Polian first.
-9. The homepage hero proof strip no longer overlaps the call-to-action buttons.
+1. Homepage, Colts report and research route load.
+2. No JavaScript console errors.
+3. No broken images.
+4. No horizontal overflow on desktop or mobile.
+5. Homepage and report mobile navigation opens/closes.
+6. Methodology dialog opens/closes.
+7. The published balanced model loads Bill Polian first.
+8. Drafting + roster-move stress test produces Chris Ballard.
+9. Roster + adversity stress test produces Ryan Grigson.
+10. Section-aware screenshots are captured for the hero and major chapters instead of repeatedly capturing only the page top.
+11. Polian, Grigson/Luck, Ballard/Taylor, quarterback, evidence and sensitivity sections receive visual QA.
 
 ## Static verification
 
-- `npm run build`
-- `npm run verify`
-- JavaScript syntax checks
-- Duplicate-ID checks
-- Relative route and asset checks
-- Homepage, report, and interaction markers
+`npm run verify` checks:
 
-## Repository verification
+- fan-first homepage/report markers;
+- full-precision model inputs;
+- official final scores;
+- registered report routes;
+- private-workbook link rejection;
+- 401/401 source-coverage language;
+- authentic archive manifest and local assets;
+- public image credits;
+- no production image hotlinks;
+- correct Manning/Luck historical source filenames;
+- permanent authentic-cutout stylesheet and integrity markers;
+- canonical metadata, sitemap, robots, favicon, manifest, 404 and security headers.
 
-- Release imported into `tucknub/era-theory` at the repository root.
-- Import workflow completed successfully and was removed afterward.
-- `.github/workflows/validate.yml` now rebuilds and verifies every push and pull request.
-- `.github/workflows/deploy-cloudflare.yml` is ready for authenticated manual deployment.
+## Visual-review standard
 
-## Publication status
+A report is not visually approved because the hero looks good. Review the whole story.
 
-The code and repository are release-ready. Public hosting now requires only the Cloudflare account ID and a Pages-edit API token to be added as GitHub Actions secrets.
+For every major chapter ask:
+
+- Does the person/image actually belong to this historical era?
+- Is the real person immediately recognizable?
+- Does the photography look integrated with the page rather than pasted into a card?
+- Can the fan understand the question before reading methodology?
+- Is the answer visible before the proof layer?
+- Does the visual/data block explain what was learned?
+- Does mobile preserve the same story and hierarchy?
+
+## Colts redesign status
+
+The authentic-cutout redesign has passed desktop/mobile visual and interaction QA on the redesign branch. The approved visual direction uses real-photo subject cutouts rather than generated people or framed photo panels.
+
+Official model remains unchanged:
+
+- Bill Polian — 70.5
+- Ryan Grigson — 61.1
+- Chris Ballard — 47.8
+
+No visual change is allowed to alter research scores or underlying model precision without an explicit research change.
