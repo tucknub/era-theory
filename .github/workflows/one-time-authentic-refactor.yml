@@ -1,0 +1,67 @@
+name: One-time authentic source reference cleanup
+
+on:
+  push:
+    branches:
+      - redesign/authentic-nfl-archive-v1
+    paths:
+      - '.github/workflows/one-time-authentic-refactor.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  refactor:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out redesign branch
+        uses: actions/checkout@v4
+        with:
+          ref: redesign/authentic-nfl-archive-v1
+
+      - name: Replace stale archive names and credits
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          paths = [
+              Path('src/index.html'),
+              Path('src/reports/colts/index.html'),
+              Path('scripts/verify.mjs'),
+          ]
+          replacements = {
+              'peyton-manning-pro-bowl-2006.jpg': 'peyton-manning-colts-2010.jpg',
+              'Peyton Manning in a blue football uniform looking downfield.': 'Peyton Manning in an Indianapolis Colts uniform preparing to pass during a 2010 game.',
+              'Peyton Manning in a blue football uniform.': 'Peyton Manning in an Indianapolis Colts uniform.',
+              'andrew-luck-2018.jpg': 'andrew-luck-2014.jpg',
+              'Andrew Luck in an Indianapolis Colts uniform during a 2018 game.': 'Andrew Luck in an Indianapolis Colts uniform during a September 2014 game.',
+              'Andrew Luck · Keith Allison · CC BY-SA 2.0 · cropped/color graded': 'Andrew Luck · Jeffrey Beall · CC BY 3.0 · cropped/color graded',
+          }
+
+          changed = []
+          for path in paths:
+              text = path.read_text()
+              before = text
+              for old, new in replacements.items():
+                  text = text.replace(old, new)
+              if text != before:
+                  path.write_text(text)
+                  changed.append(str(path))
+          if not changed:
+              raise SystemExit('Expected authentic-image source references were not found.')
+          print('Updated:', ', '.join(changed))
+          PY
+
+      - name: Verify cleanup
+        run: |
+          ! grep -R "peyton-manning-pro-bowl-2006\|andrew-luck-2018\|during a 2018 game\|Keith Allison · CC BY-SA 2.0" src scripts/verify.mjs
+          grep -R "peyton-manning-colts-2010\|andrew-luck-2014\|Jeffrey Beall · CC BY 3.0" src scripts/verify.mjs
+          git diff --check
+
+      - name: Commit source cleanup
+        run: |
+          git config user.name "Era Theory QA"
+          git config user.email "actions@users.noreply.github.com"
+          git add src/index.html src/reports/colts/index.html scripts/verify.mjs
+          git commit -m "Align site references with authentic era photos"
+          git push origin HEAD:redesign/authentic-nfl-archive-v1
