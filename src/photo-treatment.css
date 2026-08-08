@@ -1,0 +1,207 @@
+/*
+ * Authentic-photo integration layer.
+ * This file deliberately treats the edges/backgrounds around authentic people
+ * without redrawing, replacing, or modifying the photographed faces/bodies.
+ */
+
+/* Homepage: remove the visible photo-card geometry and let the real subjects float into the page. */
+.home-page .fan-hero h1 {
+  font-size: clamp(3.9rem, 6.25vw, 6.9rem);
+  line-height: .87;
+}
+.home-page .fan-hero-copy {
+  padding-top: clamp(4.5rem, 7vw, 6.8rem);
+}
+.home-page .era-portrait {
+  overflow: visible;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  clip-path: none;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+.home-page .era-portrait::after {
+  display: none;
+}
+.home-page .era-portrait > img {
+  border: 0;
+  box-shadow: none;
+  filter: saturate(.8) contrast(1.08) brightness(.91);
+  -webkit-mask-image: radial-gradient(ellipse 78% 96% at 50% 48%, #000 0 52%, rgba(0,0,0,.94) 62%, rgba(0,0,0,.6) 72%, transparent 88%);
+  mask-image: radial-gradient(ellipse 78% 96% at 50% 48%, #000 0 52%, rgba(0,0,0,.94) 62%, rgba(0,0,0,.6) 72%, transparent 88%);
+}
+.home-page .era-polian {
+  left: -3%;
+  bottom: 3%;
+  width: 39%;
+  height: 77%;
+}
+.home-page .era-polian img {
+  object-position: 50% 36%;
+}
+.home-page .era-grigson {
+  left: 25%;
+  bottom: 0;
+  width: 43%;
+  height: 84%;
+}
+.home-page .era-grigson img {
+  object-position: 50% 34%;
+}
+.home-page .era-ballard {
+  right: -5%;
+  bottom: -1%;
+  width: 47%;
+  height: 77%;
+}
+.home-page .era-ballard-main {
+  width: 72% !important;
+  left: 0;
+  object-position: 50% 30%;
+  -webkit-mask-image: radial-gradient(ellipse 80% 96% at 48% 47%, #000 0 50%, rgba(0,0,0,.92) 62%, rgba(0,0,0,.5) 74%, transparent 90%);
+  mask-image: radial-gradient(ellipse 80% 96% at 48% 47%, #000 0 50%, rgba(0,0,0,.92) 62%, rgba(0,0,0,.5) 74%, transparent 90%);
+}
+.home-page .era-ballard-secondary {
+  right: -1%;
+  top: 10%;
+  width: 60% !important;
+  height: 86% !important;
+  opacity: .54;
+  mix-blend-mode: luminosity;
+  filter: saturate(.45) contrast(1.04) brightness(.68) !important;
+  -webkit-mask-image: radial-gradient(ellipse 74% 94% at 55% 48%, #000 0 45%, rgba(0,0,0,.85) 60%, transparent 86%);
+  mask-image: radial-gradient(ellipse 74% 94% at 55% 48%, #000 0 45%, rgba(0,0,0,.85) 60%, transparent 86%);
+}
+.home-page .era-portrait figcaption {
+  left: 16%;
+  right: 8%;
+  bottom: 4%;
+}
+.home-page .era-ballard figcaption {
+  left: 18%;
+}
+
+/* Report hero: the same archive, but staged as an editorial montage rather than a row of panels. */
+.colts-story-page .hero-photo {
+  overflow: visible;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  clip-path: none;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+.colts-story-page .hero-photo::after {
+  display: none;
+}
+.colts-story-page .hero-photo > img {
+  filter: saturate(.8) contrast(1.08) brightness(.9);
+  -webkit-mask-image: radial-gradient(ellipse 78% 96% at 50% 48%, #000 0 51%, rgba(0,0,0,.93) 62%, rgba(0,0,0,.55) 73%, transparent 89%);
+  mask-image: radial-gradient(ellipse 78% 96% at 50% 48%, #000 0 51%, rgba(0,0,0,.93) 62%, rgba(0,0,0,.55) 73%, transparent 89%);
+}
+.colts-story-page .hero-photo-polian {
+  left: -4%;
+  bottom: 2%;
+  width: 40%;
+  height: 77%;
+}
+.colts-story-page .hero-photo-polian img {
+  object-position: 50% 36%;
+}
+.colts-story-page .hero-photo-grigson {
+  left: 25%;
+  bottom: -1%;
+  width: 44%;
+  height: 85%;
+}
+.colts-story-page .hero-photo-grigson img {
+  object-position: 50% 34%;
+}
+.colts-story-page .hero-photo-ballard {
+  right: -5%;
+  bottom: 0;
+  width: 47%;
+  height: 77%;
+}
+.colts-story-page .hero-photo-ballard img {
+  object-position: 50% 29%;
+}
+.colts-story-page .hero-photo figcaption {
+  left: 17%;
+  right: 10%;
+  bottom: 3%;
+  padding: .35rem .55rem;
+  background: linear-gradient(90deg, rgba(2,8,18,.64), transparent 90%);
+}
+
+/* Story photography: soften the edge into the page instead of framing every historical photo. */
+.colts-story-page .chapter-photo {
+  background: transparent;
+  overflow: visible;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+.colts-story-page .chapter-photo::after {
+  display: none;
+}
+.colts-story-page .chapter-photo img {
+  filter: saturate(.82) contrast(1.07) brightness(.91);
+  -webkit-mask-image: radial-gradient(ellipse 82% 96% at 50% 47%, #000 0 56%, rgba(0,0,0,.9) 68%, transparent 91%);
+  mask-image: radial-gradient(ellipse 82% 96% at 50% 47%, #000 0 56%, rgba(0,0,0,.9) 68%, transparent 91%);
+}
+.colts-story-page .chapter-photo figcaption {
+  bottom: .2rem;
+  color: #6f8499;
+}
+.colts-story-page .ballard-visuals::after {
+  background: linear-gradient(to right, transparent 64%, #020812 100%);
+}
+.colts-story-page .jt-photo {
+  -webkit-mask-image: radial-gradient(ellipse 78% 96% at 47% 48%, #000 0 52%, rgba(0,0,0,.9) 66%, transparent 90%);
+  mask-image: radial-gradient(ellipse 78% 96% at 47% 48%, #000 0 52%, rgba(0,0,0,.9) 66%, transparent 90%);
+}
+.colts-story-page .ar-photo {
+  opacity: .5;
+  mix-blend-mode: luminosity;
+  -webkit-mask-image: radial-gradient(ellipse 74% 94% at 52% 48%, #000 0 48%, rgba(0,0,0,.82) 62%, transparent 87%);
+  mask-image: radial-gradient(ellipse 74% 94% at 52% 48%, #000 0 48%, rgba(0,0,0,.82) 62%, transparent 87%);
+}
+
+@media (max-width: 900px) {
+  .home-page .fan-hero h1 {
+    font-size: clamp(3.8rem, 12.5vw, 6rem);
+  }
+  .home-page .era-polian,
+  .colts-story-page .hero-photo-polian {
+    left: -8%;
+    width: 43%;
+  }
+  .home-page .era-grigson,
+  .colts-story-page .hero-photo-grigson {
+    left: 27%;
+    width: 44%;
+  }
+  .home-page .era-ballard,
+  .colts-story-page .hero-photo-ballard {
+    right: -8%;
+    width: 47%;
+  }
+}
+
+@media (max-width: 720px) {
+  .home-page .fan-hero h1 {
+    font-size: clamp(3.35rem, 16vw, 5.15rem);
+  }
+  .home-page .era-portrait-stage,
+  .colts-story-page .report-hero-collage {
+    margin-top: -1.2rem;
+  }
+  .home-page .era-portrait figcaption,
+  .colts-story-page .hero-photo figcaption {
+    left: 14%;
+    right: 3%;
+    padding: 0;
+    background: transparent;
+  }
+}

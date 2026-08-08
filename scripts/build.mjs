@@ -1,5 +1,6 @@
 import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
-import { dirname, resolve } from 'node:path';
+import { resolve } from 'node:path';
+import { archiveColtsAssets } from './archive-colts.mjs';
 
 const root = resolve(import.meta.dirname, '..');
 const src = resolve(root, 'src');
@@ -70,6 +71,43 @@ async function injectMetadata(relativePath, metadata) {
 await rm(dist, { recursive: true, force: true });
 await mkdir(dist, { recursive: true });
 await cp(src, dist, { recursive: true });
+const archivedColts = await archiveColtsAssets({ root, dist });
+
+const creditsRows = archivedColts.map(asset => `
+      <article class="credit-card" id="${escapeHtml(asset.id)}">
+        <img src="${escapeHtml(asset.localSrc)}" alt="${escapeHtml(asset.alt)}" loading="lazy" />
+        <div>
+          <h2>${escapeHtml(asset.caption)}</h2>
+          <p><strong>Credit:</strong> ${escapeHtml(asset.creator)}</p>
+          <p><strong>License:</strong> <a href="${escapeHtml(asset.licenseUrl)}" rel="noreferrer">${escapeHtml(asset.license)}</a></p>
+          <p><strong>Changes:</strong> ${escapeHtml(asset.changes)}</p>
+          <p><a href="${escapeHtml(asset.sourcePage)}" rel="noreferrer">Original source record ↗</a></p>
+        </div>
+      </article>`).join('\n');
+
+const creditsPage = `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#030b16" />
+  <title>Image Credits — Era Theory</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <style>
+    body{background:#030b16;color:#f5f8fc;margin:0}.credits-main{width:min(1080px,92vw);margin:0 auto;padding:64px 0 96px}.credits-main>p{max-width:760px;color:#b7c6d8;line-height:1.7}.credit-card{display:grid;grid-template-columns:minmax(220px,34%) 1fr;gap:28px;padding:24px 0;border-top:1px solid rgba(255,255,255,.12)}.credit-card img{width:100%;max-height:420px;object-fit:cover;border-radius:18px}.credit-card h2{margin-top:0}.credit-card p{color:#c4cfdd;line-height:1.6}.credit-card a{color:#69c6ff}@media(max-width:720px){.credit-card{grid-template-columns:1fr}.credit-card img{max-height:520px}}
+  </style>
+</head>
+<body>
+  <main class="credits-main">
+    <p class="report-label">AUTHENTIC ARCHIVE</p>
+    <h1>Image credits & rights.</h1>
+    <p>Era Theory uses authentic photography for real people and historical moments. These source records document creator, license, permitted treatment and the local archived derivative used by the site. No AI-generated person substitutes are part of this archive.</p>
+${creditsRows}
+  </main>
+</body>
+</html>
+`;
+await writeFile(resolve(dist, 'image-credits.html'), creditsPage);
 
 await injectMetadata('index.html', {
   title: 'Era Theory — Sports leadership, measured',
@@ -121,8 +159,22 @@ for (const route of methodologyRoutes) {
   });
 }
 
+await injectMetadata('image-credits.html', {
+  title: 'Image Credits — Era Theory',
+  description: 'Rights, attribution and transformation records for Era Theory authentic archival imagery.',
+  url: `${baseUrl}/image-credits.html`,
+  structuredData: {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'Image Credits — Era Theory',
+    url: `${baseUrl}/image-credits.html`,
+    isPartOf: { '@type': 'WebSite', name: siteName, url: `${baseUrl}/` }
+  }
+});
+
 const sitemapUrls = [
   `${baseUrl}/`,
+  `${baseUrl}/image-credits.html`,
   ...published.map(report => publicUrl(report.route)),
   ...methodologyRoutes.map(route => publicUrl(route))
 ];
@@ -149,4 +201,4 @@ await writeFile(resolve(dist, '404.html'), notFound);
 const headers = `/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  X-Frame-Options: DENY\n  Permissions-Policy: camera=(), microphone=(), geolocation=()\n`;
 await writeFile(resolve(dist, '_headers'), headers);
 
-console.log(`Built Era Theory into dist/ with ${published.length} published report${published.length === 1 ? '' : 's'}, SEO metadata, sitemap, robots, favicon, 404, and security headers.`);
+console.log(`Built Era Theory into dist/ with ${published.length} published report${published.length === 1 ? '' : 's'}, ${archivedColts.length} rights-approved Colts images, image credits, SEO metadata, sitemap, robots, favicon, 404, and security headers.`);

@@ -5,7 +5,7 @@
   "description": "Era Theory — research-driven sports leadership reports. Colts Era Lab is Report 001.",
   "scripts": {
     "build": "node scripts/build.mjs",
-    "verify": "node scripts/verify.mjs",
+    "verify": "node scripts/verify.mjs && node scripts/verify-cutouts.mjs",
     "new-report": "node scripts/new-report.mjs",
     "start": "python3 -m http.server 4173 -d dist"
   }

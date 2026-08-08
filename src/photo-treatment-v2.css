@@ -1,0 +1,171 @@
+/*
+ * V2 authentic hero treatment: full-height overlapping archival triptych.
+ * No generated people; no floating photo cards. Real images blend across one visual field.
+ */
+
+.home-page .era-portrait-stage,
+.colts-story-page .report-hero-collage {
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 52% 34%, rgba(57,132,211,.17), transparent 32rem),
+    #04101c;
+}
+
+.home-page .era-portrait,
+.colts-story-page .hero-photo {
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  clip-path: none;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
+.home-page .era-portrait > img,
+.colts-story-page .hero-photo > img {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  opacity: 1;
+  mix-blend-mode: normal;
+  filter: saturate(.78) contrast(1.08) brightness(.82);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.68) 9%, #000 20%, #000 80%, rgba(0,0,0,.68) 91%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.68) 9%, #000 20%, #000 80%, rgba(0,0,0,.68) 91%, transparent 100%);
+}
+
+.home-page .era-polian,
+.colts-story-page .hero-photo-polian {
+  left: -7%;
+  width: 48%;
+  z-index: 2;
+}
+.home-page .era-polian img,
+.colts-story-page .hero-photo-polian img {
+  object-position: 52% 38%;
+}
+
+.home-page .era-grigson,
+.colts-story-page .hero-photo-grigson {
+  left: 26%;
+  width: 49%;
+  z-index: 4;
+}
+.home-page .era-grigson img,
+.colts-story-page .hero-photo-grigson img {
+  object-position: 50% 32%;
+  filter: saturate(.82) contrast(1.08) brightness(.88);
+}
+
+.home-page .era-ballard,
+.colts-story-page .hero-photo-ballard {
+  right: -8%;
+  width: 48%;
+  z-index: 3;
+}
+.home-page .era-ballard-main,
+.colts-story-page .hero-photo-ballard img {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  object-position: 48% 27%;
+  filter: saturate(.83) contrast(1.08) brightness(.84) !important;
+  opacity: 1;
+  mix-blend-mode: normal;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.7) 11%, #000 22%, #000 100%);
+  mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.7) 11%, #000 22%, #000 100%);
+}
+.home-page .era-ballard-secondary {
+  display: none;
+}
+
+/* One common cinematic wash ties three authentic photos into the same page. */
+.home-page .era-portrait-stage::after,
+.colts-story-page .report-hero-collage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 7;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(2,8,18,.42) 0%, transparent 22%, transparent 76%, rgba(2,8,18,.28) 100%),
+    linear-gradient(to top, rgba(2,8,18,.95) 0%, rgba(2,8,18,.22) 24%, transparent 48%, rgba(2,8,18,.2) 100%);
+}
+
+.home-page .era-portrait figcaption,
+.colts-story-page .hero-photo figcaption {
+  z-index: 9;
+  left: 20%;
+  right: 8%;
+  bottom: 4.5rem;
+  padding: 0;
+  background: transparent;
+}
+.home-page .era-portrait figcaption strong,
+.colts-story-page .hero-photo figcaption b {
+  text-shadow: 0 2px 18px rgba(0,0,0,.9);
+}
+
+/* Let the text/photo boundary feel intentional instead of two separate page halves. */
+.home-page .fan-hero::after,
+.colts-story-page .report-story-hero::after {
+  right: 2%;
+  width: 48%;
+  opacity: .55;
+}
+.home-page .fan-hero-copy,
+.colts-story-page .report-story-copy {
+  z-index: 12;
+}
+
+@media (max-width: 900px) {
+  .home-page .era-polian,
+  .colts-story-page .hero-photo-polian {
+    left: -10%;
+    width: 49%;
+  }
+  .home-page .era-grigson,
+  .colts-story-page .hero-photo-grigson {
+    left: 25%;
+    width: 50%;
+  }
+  .home-page .era-ballard,
+  .colts-story-page .hero-photo-ballard {
+    right: -10%;
+    width: 49%;
+  }
+}
+
+@media (max-width: 720px) {
+  .home-page .era-portrait-stage,
+  .colts-story-page .report-hero-collage {
+    min-height: 380px;
+    margin-top: -.5rem;
+  }
+  .home-page .era-polian,
+  .colts-story-page .hero-photo-polian {
+    left: -13%;
+    width: 52%;
+  }
+  .home-page .era-grigson,
+  .colts-story-page .hero-photo-grigson {
+    left: 24%;
+    width: 52%;
+  }
+  .home-page .era-ballard,
+  .colts-story-page .hero-photo-ballard {
+    right: -13%;
+    width: 52%;
+  }
+  .home-page .era-portrait figcaption,
+  .colts-story-page .hero-photo figcaption {
+    bottom: 1.2rem;
+    left: 18%;
+  }
+}
