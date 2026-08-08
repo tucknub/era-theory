@@ -1,6 +1,6 @@
 {
-  "version": "1.0",
-  "policy": "Authentic people and historical moments use authentic source photography only. AI may support atmosphere and abstract design but must not replace or alter photographed people.",
+  "version": "1.1",
+  "policy": "Authentic people and historical moments use authentic source photography only. AI may support atmosphere and abstract design but must not replace or alter photographed people. Narrative cutouts may hide source-photo background pixels using segmentation-derived silhouette masks; photographed person pixels are not generated or reconstructed.",
   "assets": [
     {
       "id": "ET-COLTS-001",
@@ -17,7 +17,7 @@
       "extension": "jpg",
       "originalWidth": 366,
       "originalHeight": 491,
-      "changes": "Responsive crop, CSS mask, color grade and edge fade only; photographed person remains unaltered.",
+      "changes": "Narrative cutout hides background pixels with a segmentation-derived silhouette; photographed person pixels are not generated, redrawn or reconstructed. Responsive sizing and color grade only.",
       "focal": { "desktop": "50% 42%", "mobile": "50% 38%" }
     },
     {
@@ -35,7 +35,7 @@
       "extension": "jpg",
       "originalWidth": 590,
       "originalHeight": 800,
-      "changes": "Responsive crop, CSS mask, color grade and edge fade; attribution includes modification disclosure; derivative treatment remains CC BY-SA 2.0.",
+      "changes": "Narrative cutout hides background pixels with a segmentation-derived silhouette; photographed player pixels are not generated, redrawn or reconstructed. Responsive sizing/color grade disclosed; derivative treatment remains CC BY-SA 2.0.",
       "focal": { "desktop": "50% 39%", "mobile": "50% 36%" }
     },
     {
@@ -53,7 +53,7 @@
       "extension": "jpg",
       "originalWidth": 853,
       "originalHeight": 1476,
-      "changes": "Responsive crop, CSS mask, color grade and edge fade only; photographed player remains unaltered.",
+      "changes": "Narrative cutout hides background pixels with a segmentation-derived silhouette; photographed player pixels are not generated, redrawn or reconstructed. Responsive sizing and color grade only.",
       "focal": { "desktop": "50% 37%", "mobile": "50% 34%" }
     },
     {
@@ -71,7 +71,7 @@
       "extension": "png",
       "originalWidth": 1920,
       "originalHeight": 1080,
-      "changes": "Responsive crop, CSS mask, color grade and edge fade only; photographed player remains unaltered.",
+      "changes": "Responsive crop and color grade only; photographed player remains unaltered. This asset remains in the authentic evidence archive and QB evidence strip rather than the main cutout hero.",
       "focal": { "desktop": "50% 46%", "mobile": "50% 42%" }
     },
     {
@@ -89,7 +89,7 @@
       "extension": "jpg",
       "originalWidth": 543,
       "originalHeight": 1034,
-      "changes": "Responsive crop, CSS mask, color grade and edge fade; attribution includes modification disclosure; derivative treatment remains CC BY-SA 2.0.",
+      "changes": "Narrative cutout hides background pixels with a segmentation-derived silhouette; photographed player pixels are not generated, redrawn or reconstructed. Responsive sizing/color grade disclosed; derivative treatment remains CC BY-SA 2.0.",
       "focal": { "desktop": "50% 35%", "mobile": "50% 32%" }
     }
   ]
