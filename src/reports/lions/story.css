@@ -1,0 +1,278 @@
+@import url("../colts/story.css");
+
+/* Detroit Lions Report 002
+ * Authentic people remain source-photo pixels. These clip paths hide background pixels only.
+ */
+:root {
+  --lions-blue: #0076b6;
+  --lions-blue-bright: #29a9e8;
+  --lions-silver: #b0b7bc;
+  --calvin-cutout: polygon(42% 14%,49% 15%,55% 20%,57% 29%,56% 38%,59% 48%,65% 57%,67% 62%,63% 66%,59% 60%,59% 70%,57% 82%,55% 93%,52% 97%,45% 97%,42% 92%,43% 83%,41% 72%,38% 64%,35% 59%,34% 48%,35% 39%,32% 34%,31% 26%,34% 20%,38% 18%);
+  --stafford-cutout: polygon(52% 3%,62% 6%,68% 12%,69% 20%,75% 22%,83% 26%,91% 31%,96% 36%,95% 42%,88% 41%,82% 38%,77% 37%,75% 50%,72% 61%,70% 72%,75% 80%,73% 88%,67% 94%,60% 95%,56% 91%,53% 82%,48% 76%,44% 83%,38% 91%,32% 94%,24% 92%,20% 87%,24% 80%,30% 74%,34% 66%,37% 57%,39% 49%,35% 44%,29% 40%,21% 38%,13% 40%,7% 42%,3% 39%,5% 34%,11% 31%,18% 29%,26% 26%,34% 22%,36% 14%,41% 7%);
+  --sewell-cutout: polygon(42% 2%,57% 3%,64% 8%,66% 17%,64% 25%,70% 27%,82% 31%,91% 38%,95% 49%,94% 59%,91% 70%,96% 79%,95% 89%,88% 96%,79% 97%,72% 92%,67% 84%,63% 96%,36% 96%,31% 84%,26% 92%,18% 97%,10% 94%,5% 87%,7% 76%,11% 67%,7% 57%,8% 46%,13% 36%,23% 30%,34% 26%,36% 17%,36% 9%);
+}
+
+.lions-story-page {
+  --cyan: var(--lions-blue-bright);
+  --blue: var(--lions-blue);
+  background:
+    radial-gradient(circle at 82% 2%, rgba(0,118,182,.24), transparent 34rem),
+    #020812;
+}
+
+.lions-story-page .brand-mark { border-color: rgba(41,169,232,.55); }
+.lions-story-page .winner .rank-score strong { color: #d5e7f3; }
+.lions-story-page .technical-label { color: #7eaec8; }
+
+/* Hero: three real photo silhouettes tell collapse → Stafford era → synchronized build. */
+.lions-story-page .lions-hero-collage {
+  position: relative;
+  background:
+    radial-gradient(circle at 54% 34%, rgba(0,118,182,.30), transparent 27rem),
+    repeating-linear-gradient(90deg, transparent 0 108px, rgba(41,169,232,.03) 109px 110px),
+    linear-gradient(155deg,#071a2d,#020812 78%);
+  isolation: isolate;
+}
+.lions-story-page .lions-hero-collage::before {
+  content:"";
+  position:absolute;
+  inset:10% 5% 7% 4%;
+  z-index:0;
+  background: repeating-radial-gradient(ellipse at 50% 104%,transparent 0 56px,rgba(41,169,232,.08) 57px 58px);
+  transform:perspective(850px) rotateX(63deg);
+  opacity:.7;
+  pointer-events:none;
+}
+.lions-story-page .lions-hero-collage::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:6;
+  pointer-events:none;
+  background:linear-gradient(to top,rgba(2,8,18,.84),transparent 30%),linear-gradient(90deg,rgba(2,8,18,.34),transparent 28%,transparent 78%,rgba(2,8,18,.22));
+}
+.lions-story-page .lions-hero-collage .hero-photo {
+  top:auto !important;
+  height:auto !important;
+  overflow:visible !important;
+  border:0 !important;
+  background:transparent !important;
+  box-shadow:none !important;
+  clip-path:none !important;
+  -webkit-mask-image:none !important;
+  mask-image:none !important;
+}
+.lions-story-page .lions-hero-collage .hero-photo::after { display:none !important; }
+.lions-story-page .lions-hero-collage .hero-photo > img {
+  position:absolute;
+  inset:0;
+  width:100% !important;
+  height:100% !important;
+  object-fit:fill !important;
+  -webkit-mask-image:none !important;
+  mask-image:none !important;
+  filter:drop-shadow(0 30px 34px rgba(0,0,0,.56)) saturate(.92) contrast(1.05) brightness(.98) !important;
+}
+.lions-story-page .lions-calvin {
+  left:-2% !important;
+  bottom:-1% !important;
+  width:42% !important;
+  aspect-ratio:1391/1734;
+  z-index:2 !important;
+}
+.lions-story-page .lions-calvin > img { clip-path:var(--calvin-cutout) !important; }
+.lions-story-page .lions-stafford {
+  left:27% !important;
+  bottom:-1% !important;
+  width:44% !important;
+  aspect-ratio:588/940;
+  z-index:4 !important;
+}
+.lions-story-page .lions-stafford > img { clip-path:var(--stafford-cutout) !important; }
+.lions-story-page .lions-sewell {
+  right:-3% !important;
+  bottom:-2% !important;
+  width:43% !important;
+  aspect-ratio:819/998;
+  z-index:3 !important;
+}
+.lions-story-page .lions-sewell > img { clip-path:var(--sewell-cutout) !important; }
+.lions-story-page .lions-hero-collage figcaption {
+  z-index:8 !important;
+  left:17% !important;
+  right:auto !important;
+  bottom:1.25rem !important;
+  min-width:150px;
+  padding:.35rem .55rem !important;
+  background:linear-gradient(90deg,rgba(2,8,18,.82),rgba(2,8,18,.08)) !important;
+}
+.lions-story-page .lions-hero-collage .lions-sewell figcaption { left:20% !important; }
+
+.four-ranks .rank-story { min-height: 132px; }
+.lions-era-lines article { grid-template-columns: 140px 190px 235px 1fr; }
+.lions-chapter-map { grid-template-columns: repeat(4, 1fr); }
+.lions-chapter-map a:nth-child(5n) { border-right:1px solid rgba(105,198,255,.13); }
+.lions-chapter-map a:nth-child(4n) { border-right:0; }
+
+/* True source-photo silhouettes in the story chapters. */
+.lions-story-page .lions-calvin-photo,
+.lions-story-page .lions-stafford-photo {
+  min-height:0 !important;
+  height:auto !important;
+  overflow:visible !important;
+  background:transparent !important;
+  -webkit-mask-image:none !important;
+  mask-image:none !important;
+}
+.lions-story-page .lions-calvin-photo { aspect-ratio:1391/1734; }
+.lions-story-page .lions-stafford-photo { aspect-ratio:588/940; }
+.lions-story-page .lions-calvin-photo::after,
+.lions-story-page .lions-stafford-photo::after { display:none !important; }
+.lions-story-page .lions-calvin-photo img,
+.lions-story-page .lions-stafford-photo img {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:fill;
+  -webkit-mask-image:none !important;
+  mask-image:none !important;
+  filter:drop-shadow(0 30px 34px rgba(0,0,0,.52)) saturate(.94) contrast(1.04) brightness(1.01);
+}
+.lions-story-page .lions-calvin-photo img { clip-path:var(--calvin-cutout); }
+.lions-story-page .lions-stafford-photo img { clip-path:var(--stafford-cutout); }
+.lions-story-page .chapter-photo figcaption {
+  left:8% !important;
+  right:8% !important;
+  bottom:-1.25rem !important;
+  z-index:4;
+  color:#6f8499;
+  text-align:center;
+}
+
+.credit-triad {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  margin-top:2.5rem;
+  background:rgba(41,169,232,.17);
+  border-block:1px solid rgba(41,169,232,.18);
+}
+.credit-triad article { padding:1.4rem; background:#06111d; }
+.credit-triad span { color:var(--cyan); font-family:var(--display); font-size:.67rem; letter-spacing:.11em; }
+.credit-triad strong { display:block; margin-top:.45rem; font-family:var(--display); font-size:1.9rem; text-transform:uppercase; }
+.credit-triad p { color:var(--muted); line-height:1.55; }
+
+.coaching-fall {
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  margin-top:2.4rem;
+  border-block:1px solid rgba(41,169,232,.17);
+}
+.coaching-fall div { padding:1.2rem .9rem; border-right:1px solid rgba(41,169,232,.13); }
+.coaching-fall div:last-child { border-right:0; }
+.coaching-fall strong { display:block; font-family:var(--display); font-size:clamp(1.7rem,2.8vw,3rem); }
+.coaching-fall span { color:#8096aa; font-size:.67rem; text-transform:uppercase; }
+
+.lions-holmes-feature {
+  min-height:720px;
+  display:grid;
+  grid-template-columns:minmax(360px,.78fr) minmax(0,1.22fr);
+  gap:clamp(2rem,6vw,6rem);
+  align-items:center;
+}
+.lions-holmes-feature .chapter-story-copy { margin-left:0; }
+.holmes-visuals {
+  position:relative;
+  min-height:620px;
+  background:radial-gradient(circle at 50% 47%,rgba(0,118,182,.25),transparent 19rem);
+}
+.holmes-visuals img {
+  position:absolute;
+  left:4%;
+  bottom:0;
+  width:auto;
+  height:98%;
+  aspect-ratio:819/998;
+  object-fit:fill;
+  clip-path:var(--sewell-cutout);
+  filter:drop-shadow(0 34px 36px rgba(0,0,0,.54)) saturate(.94) contrast(1.05) brightness(1.01);
+}
+.system-chain {
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:.65rem;
+  margin-top:2.2rem;
+}
+.system-chain span { padding:.65rem .8rem; border:1px solid rgba(41,169,232,.2); color:#d9e7f1; font-family:var(--display); text-transform:uppercase; font-size:.75rem; }
+.system-chain b { color:var(--cyan); }
+
+/* Goff is intentionally a real full-bleed archival crop rather than a fake cutout. */
+.lions-story-page .lions-goff-photo {
+  min-height:560px;
+  overflow:hidden;
+  background:#061421;
+  -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 77%,transparent 100%);
+  mask-image:linear-gradient(to bottom,#000 0%,#000 77%,transparent 100%);
+}
+.lions-story-page .lions-goff-photo::after { display:block !important; content:""; position:absolute; inset:0; background:linear-gradient(to top,#020812,transparent 45%); }
+.lions-story-page .lions-goff-photo img { object-position:50% 42%; filter:saturate(.86) contrast(1.06) brightness(.92); }
+
+.trade-equation {
+  display:grid;
+  grid-template-columns:1fr auto 1fr auto 1fr;
+  gap:1rem;
+  align-items:center;
+  margin-top:2.5rem;
+}
+.trade-equation div { padding:1.2rem; border-top:2px solid var(--cyan); background:rgba(6,25,42,.52); }
+.trade-equation span { display:block; color:#8298ad; font-size:.67rem; text-transform:uppercase; }
+.trade-equation strong { display:block; margin-top:.4rem; color:#e6eff7; }
+.trade-equation > b { color:var(--cyan); font-size:1.4rem; }
+
+.developing-note { display:block; margin-top:.7rem; color:#6f8499; }
+.resilience-contrast { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:2.4rem; }
+.resilience-contrast article { padding:1.4rem; border-top:2px solid var(--cyan); background:linear-gradient(180deg,rgba(8,32,54,.55),transparent); }
+.resilience-contrast strong { font-family:var(--display); font-size:2.4rem; }
+.resilience-contrast span { display:block; color:#8ca0b4; text-transform:uppercase; font-size:.68rem; }
+.resilience-contrast b { display:block; margin-top:.7rem; font-family:var(--display); font-size:2rem; color:#e8f2fa; }
+.resilience-contrast p { color:var(--muted); line-height:1.55; }
+.final-caveat { margin-top:1.5rem !important; padding-left:1rem; border-left:3px solid var(--lions-silver); }
+
+.lions-story-page .era-card.holmes header span { color:#dcecf5; }
+.lions-story-page .era-card .metric-track span,
+.lions-story-page .model-bar-track span { background:linear-gradient(90deg,#0076b6,#29a9e8); }
+
+@media(max-width:1100px) {
+  .lions-era-lines article { grid-template-columns:125px 170px 210px 1fr; }
+  .lions-chapter-map { grid-template-columns:repeat(4,minmax(160px,1fr)); overflow-x:auto; }
+}
+@media(max-width:900px) {
+  .lions-story-page .lions-calvin { left:-8% !important;width:47% !important; }
+  .lions-story-page .lions-stafford { left:26% !important;width:46% !important; }
+  .lions-story-page .lions-sewell { right:-6% !important;width:45% !important; }
+  .lions-era-lines article { grid-template-columns:110px 1fr; }
+  .lions-era-lines strong,.lions-era-lines p { grid-column:2; }
+  .credit-triad { grid-template-columns:1fr; }
+  .coaching-fall { grid-template-columns:repeat(3,1fr); }
+  .lions-holmes-feature { grid-template-columns:1fr; }
+  .holmes-visuals { min-height:520px; margin-left:clamp(5rem,11vw,8rem); }
+  .lions-holmes-feature .chapter-story-copy { margin-left:clamp(5rem,11vw,8rem); }
+  .trade-equation { grid-template-columns:1fr; }
+  .trade-equation > b { transform:rotate(90deg); justify-self:center; }
+}
+@media(max-width:720px) {
+  .lions-story-page .lions-hero-collage { min-height:360px !important; }
+  .lions-story-page .lions-calvin { left:-11% !important;width:51% !important; }
+  .lions-story-page .lions-stafford { left:25% !important;width:50% !important; }
+  .lions-story-page .lions-sewell { right:-10% !important;width:48% !important; }
+  .lions-story-page .lions-hero-collage figcaption { left:12% !important; min-width:115px; }
+  .lions-era-lines article { grid-template-columns:1fr; gap:.35rem; }
+  .lions-era-lines strong,.lions-era-lines p { grid-column:1; }
+  .coaching-fall { grid-template-columns:1fr 1fr; }
+  .coaching-fall div:nth-child(even) { border-right:0; }
+  .resilience-contrast { grid-template-columns:1fr; }
+  .holmes-visuals { min-height:420px; margin-left:3.5rem; }
+  .lions-holmes-feature .chapter-story-copy { margin-left:3.5rem; }
+}
