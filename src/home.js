@@ -29,14 +29,14 @@ function renderPublishedTile(report, index) {
       <div class="report-number">${escapeHtml(report.number)}</div>
       <div class="report-tile-body">
         <p>${escapeHtml(meta)}</p>
-        <h3>${escapeHtml(report.title)}</h3>
+        <h3>${escapeHtml(report.publicQuestion || report.title)}</h3>
         <span>${escapeHtml(report.subtitle || report.subject || '')}</span>
-        <p>${escapeHtml(report.summary || `${report.coreEvidenceRecords || 'Source-linked'} evidence records support this published Era Theory report.`)}</p>
+        <p>${escapeHtml(report.summary || report.fanSummary || `${report.coreEvidenceRecords || 'Source-linked'} evidence records support this published Era Theory story.`)}</p>
       </div>
       <div class="report-tile-result">
         <strong>${score}</strong>
         <small>${escapeHtml(report.resultLabel || 'Final score')}</small>
-        <a href="${escapeHtml(report.route)}">Explore report</a>
+        <a href="${escapeHtml(report.route)}">Start the story</a>
       </div>
     </article>`;
 }
@@ -46,12 +46,12 @@ function renderPlannedTile(number) {
     <article class="report-tile planned">
       <div class="report-number">${escapeHtml(number)}</div>
       <div class="report-tile-body">
-        <p>OPEN SLOT · NEXT RESEARCH PROJECT</p>
-        <h3>Franchise leadership study</h3>
-        <span>League and eras to be selected</span>
-        <p>The next report can use the same foundation without forcing every sport into the Colts-specific scoring model.</p>
+        <p>NEXT STORY · NOT YET SELECTED</p>
+        <h3>Another sports argument, researched from scratch.</h3>
+        <span>The next franchise and eras will be chosen after Report 001's redesign.</span>
+        <p>Era Theory keeps the research standard but adapts the story and scoring to the sport instead of forcing every report into one template.</p>
       </div>
-      <div class="report-tile-result"><strong>—</strong><small>Not researched</small><span>Planned</span></div>
+      <div class="report-tile-result"><strong>—</strong><small>Not researched</small><span>Coming later</span></div>
     </article>`;
 }
 
@@ -59,10 +59,10 @@ const beltTheoryTile = `
   <article class="report-tile concept">
     <div class="report-number">BT</div>
     <div class="report-tile-body">
-      <p>WRESTLING · SEPARATE PRODUCT</p>
-      <h3>Belt Theory</h3>
-      <span>Championship history and organizational eras</span>
-      <p>Belt Theory remains wrestling-specific. Era Theory shares its research-driven DNA without absorbing or replacing it.</p>
+      <p>WRESTLING · COMPANION PROJECT</p>
+      <h3>Like wrestling history too?</h3>
+      <span>Belt Theory</span>
+      <p>Championship history and promotion eras researched with the same evidence-first philosophy.</p>
     </div>
     <div class="report-tile-result"><strong>↗</strong><small>Companion project</small><span>Independent</span></div>
   </article>`;
@@ -84,7 +84,7 @@ async function hydrateReportLibrary() {
     const nextNumber = String(highest + 1).padStart(3, '0');
     library.innerHTML = `${published.map(renderPublishedTile).join('')}${renderPlannedTile(nextNumber)}${beltTheoryTile}`;
   } catch {
-    // The server-rendered library remains as a resilient fallback.
+    // The server-rendered fan-first library remains as a resilient fallback.
   }
 }
 
