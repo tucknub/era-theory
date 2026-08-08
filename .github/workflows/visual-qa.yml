@@ -51,9 +51,11 @@ jobs:
           npx --yes playwright@1.55.0 screenshot --browser=chromium --viewport-size="390,844" http://127.0.0.1:4173/reports/colts/ screenshots/colts-mobile.png
           npx --yes playwright@1.55.0 screenshot --browser=chromium --viewport-size="390,844" http://127.0.0.1:4173/research/ screenshots/research-mobile.png
 
-      - name: Upload visual QA screenshots
+      - name: Upload visual QA screenshots and authentic source archive
         uses: actions/upload-artifact@v4
         with:
           name: era-theory-visual-qa
-          path: screenshots/*.png
+          path: |
+            screenshots/*.png
+            dist/assets/archive/*
           retention-days: 1
