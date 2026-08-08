@@ -28,8 +28,10 @@ jobs:
           npm run build
           npm run verify
 
-      - name: Install Chromium for screenshot QA
-        run: npx --yes playwright@1.55.0 install --with-deps chromium
+      - name: Install browser QA runtime
+        run: |
+          npm install --no-save --package-lock=false playwright@1.55.0
+          npx playwright install --with-deps chromium
 
       - name: Start local preview
         run: |
@@ -41,27 +43,8 @@ jobs:
           cat /tmp/era-theory-server.log
           exit 1
 
-      - name: Capture homepage, report, methodology, and chapter screenshots
-        run: |
-          mkdir -p screenshots
-          DESKTOP='--browser=chromium --viewport-size=1536,1000'
-          MOBILE='--browser=chromium --viewport-size=390,844'
-          BASE='http://127.0.0.1:4173'
-
-          npx --yes playwright@1.55.0 screenshot $DESKTOP "$BASE/" screenshots/home-desktop.png
-          npx --yes playwright@1.55.0 screenshot $MOBILE "$BASE/" screenshots/home-mobile.png
-          npx --yes playwright@1.55.0 screenshot $DESKTOP "$BASE/reports/colts/" screenshots/colts-desktop.png
-          npx --yes playwright@1.55.0 screenshot $MOBILE "$BASE/reports/colts/" screenshots/colts-mobile.png
-          npx --yes playwright@1.55.0 screenshot $DESKTOP "$BASE/research/" screenshots/research-desktop.png
-          npx --yes playwright@1.55.0 screenshot $MOBILE "$BASE/research/" screenshots/research-mobile.png
-
-          for section in verdict eras questions results polian grigson ballard quarterback drafts transactions coaching evidence sensitivity final; do
-            npx --yes playwright@1.55.0 screenshot $DESKTOP "$BASE/reports/colts/#$section" "screenshots/colts-$section-desktop.png"
-          done
-
-          for section in polian grigson ballard quarterback evidence sensitivity final; do
-            npx --yes playwright@1.55.0 screenshot $MOBILE "$BASE/reports/colts/#$section" "screenshots/colts-$section-mobile.png"
-          done
+      - name: Run visual and interaction QA
+        run: node scripts/visual-qa.mjs
 
       - name: Upload visual QA screenshots and authentic source archive
         uses: actions/upload-artifact@v4
