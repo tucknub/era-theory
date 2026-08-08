@@ -103,3 +103,5 @@ Official model remains unchanged:
 - Chris Ballard — 47.8
 
 No visual change is allowed to alter research scores or underlying model precision without an explicit research change.
+
+This document is the frozen QA record for the approved redesign merge.
