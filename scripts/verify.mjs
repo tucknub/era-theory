@@ -73,8 +73,8 @@ for (const marker of [
   'The Ballard contradiction',
   'Sensitivity lab',
   '/assets/archive/bill-polian-rca-dome-2007.jpg',
-  '/assets/archive/peyton-manning-pro-bowl-2006.jpg',
-  '/assets/archive/andrew-luck-2018.jpg',
+  '/assets/archive/peyton-manning-colts-2010.jpg',
+  '/assets/archive/andrew-luck-2014.jpg',
   '/assets/archive/anthony-richardson-2023.png',
   '/assets/archive/jonathan-taylor-2022.jpg'
 ]) {
