@@ -1,0 +1,32 @@
+@media (max-width: 720px) {
+  .home-page .fan-hero-copy {
+    padding-top: 3rem;
+    padding-bottom: .7rem;
+  }
+  .home-page .fan-hero h1 {
+    font-size: clamp(3rem, 14vw, 4.55rem);
+    line-height: .9;
+  }
+  .home-page .fan-lede {
+    margin-top: 1.15rem;
+    line-height: 1.5;
+  }
+  .home-page .fan-hero .hero-actions {
+    margin-top: 1.35rem;
+    gap: .55rem;
+  }
+  .home-page .authentic-note {
+    display: none;
+  }
+  .home-page .era-portrait-stage {
+    min-height: 350px;
+    margin-top: -.2rem;
+  }
+
+  .colts-story-page .report-story-copy {
+    padding-bottom: .75rem;
+  }
+  .colts-story-page .story-photo-note {
+    margin-bottom: .15rem;
+  }
+}
