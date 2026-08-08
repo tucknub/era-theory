@@ -1,4 +1,4 @@
-name: Visual QA — Era Theory Redesign
+name: Visual QA — Era Theory
 
 on:
   pull_request:
@@ -46,7 +46,7 @@ jobs:
       - name: Run visual and interaction QA
         run: node scripts/visual-qa.mjs
 
-      - name: Upload visual QA screenshots and authentic source archive
+      - name: Upload QA screenshots and authentic source archive
         uses: actions/upload-artifact@v4
         with:
           name: era-theory-visual-qa
