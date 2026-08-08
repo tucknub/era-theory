@@ -57,9 +57,13 @@ if (!home.includes('Who actually changed the Detroit Lions?')) {
 }
 
 // Report 002 has a dedicated methodology page. Keep all Detroit research links on that surface.
+// The final photo-treatment layer overrides the first-pass rough polygons after visual QA.
 const lionsPath = resolve(dist, 'reports', 'lions', 'index.html');
 let lions = await readFile(lionsPath, 'utf8');
 lions = lions.replaceAll('../../research/index.html', '../../research/lions/index.html');
+if (!lions.includes('photo-treatment-v2.css')) {
+  lions = lions.replace('<link rel="stylesheet" href="story.css" />', '<link rel="stylesheet" href="story.css" />\n  <link rel="stylesheet" href="photo-treatment-v2.css" />');
+}
 await writeFile(lionsPath, lions);
 
-console.log(`Finalized Report 002 publication build with ${archivedLions.length} rights-approved Detroit images, Detroit image credits, a server-rendered homepage library tile and report-specific methodology links.`);
+console.log(`Finalized Report 002 publication build with ${archivedLions.length} rights-approved Detroit images, Detroit image credits, a server-rendered homepage library tile, report-specific methodology links and the refined authentic-photo treatment.`);
