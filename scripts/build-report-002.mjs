@@ -61,6 +61,14 @@ if (!home.includes('Who actually changed the Detroit Lions?')) {
 const lionsPath = resolve(dist, 'reports', 'lions', 'index.html');
 let lions = await readFile(lionsPath, 'utf8');
 lions = lions.replaceAll('../../research/index.html', '../../research/lions/index.html');
+lions = lions.replace(
+  'Calvin Johnson · Dave Hogg · CC BY 2.0 · authentic photograph, background clipped for layout',
+  'Calvin Johnson · Dave Hogg · CC BY 2.0 · authentic photograph · soft-edged into the layout'
+);
+lions = lions.replace(
+  'Matthew Stafford · Keith Allison · CC BY-SA 2.0 · authentic photograph, background clipped for layout',
+  'Matthew Stafford · Keith Allison · CC BY-SA 2.0 · authentic photograph · background masked for layout'
+);
 if (!lions.includes('photo-treatment-v2.css')) {
   lions = lions.replace('<link rel="stylesheet" href="story.css" />', '<link rel="stylesheet" href="story.css" />\n  <link rel="stylesheet" href="photo-treatment-v2.css" />');
 }
