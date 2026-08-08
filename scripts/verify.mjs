@@ -14,6 +14,7 @@ for (const required of [
 }
 
 const home = await readFile(resolve(dist, 'index.html'), 'utf8');
+const homeJs = await readFile(resolve(dist, 'home.js'), 'utf8');
 const js = await readFile(resolve(dist, 'app.js'), 'utf8');
 const registry = JSON.parse(await readFile(resolve(dist, 'data', 'reports.json'), 'utf8'));
 const sitemap = await readFile(resolve(dist, 'sitemap.xml'), 'utf8');
@@ -24,6 +25,9 @@ const manifest = JSON.parse(await readFile(resolve(dist, 'site.webmanifest'), 'u
 
 for (const marker of ['Every era leaves evidence.', 'Report library', 'Evidence first. Atmosphere second.', '300,000 model simulations']) {
   if (!home.includes(marker)) throw new Error(`Missing homepage marker: ${marker}`);
+}
+for (const marker of ['data/reports.json', 'hydrateReportLibrary', 'renderPublishedTile', 'report-library']) {
+  if (!homeJs.includes(marker)) throw new Error(`Homepage registry renderer missing marker: ${marker}`);
 }
 for (const marker of [
   `<link rel="canonical" href="${baseUrl}/"`,
@@ -135,4 +139,4 @@ for (const htmlPath of await collectHtml(dist)) {
   }
 }
 
-console.log(`Verification passed: homepage, ${published.length} registered report${published.length === 1 ? '' : 's'}, public methodology, privacy guards, full-precision model inputs, canonical metadata, sitemap, robots, favicon, 404, manifest, security headers, assets, sections, and interactions are present.`);
+console.log(`Verification passed: homepage registry, ${published.length} registered report${published.length === 1 ? '' : 's'}, public methodology, privacy guards, full-precision model inputs, canonical metadata, sitemap, robots, favicon, 404, manifest, security headers, assets, sections, and interactions are present.`);
