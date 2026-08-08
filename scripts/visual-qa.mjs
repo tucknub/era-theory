@@ -59,6 +59,8 @@ await screenshotTop('/reports/lions/', 'lions-desktop.png', desktop);
 await screenshotTop('/reports/lions/', 'lions-mobile.png', mobile);
 await screenshotTop('/research/', 'research-desktop.png', desktop);
 await screenshotTop('/research/', 'research-mobile.png', mobile);
+await screenshotTop('/research/lions/', 'lions-research-desktop.png', desktop);
+await screenshotTop('/research/lions/', 'lions-research-mobile.png', mobile);
 
 for (const section of ['verdict','eras','questions','results','polian','grigson','ballard','quarterback','drafts','transactions','coaching','evidence','sensitivity','final']) {
   await screenshotSection('/reports/colts/', section, `colts-${section}-desktop.png`, desktop);
@@ -85,6 +87,7 @@ async function testMobileMenu(path, navId, label) {
 }
 await testMobileMenu('/reports/colts/', '#mobile-nav', 'Colts');
 await testMobileMenu('/reports/lions/', '#lions-mobile-nav', 'Lions');
+await testMobileMenu('/research/lions/', '#research-mobile-nav', 'Detroit research');
 
 async function testDialog(path, dialogId, label) {
   const page = await preparePage(path, desktop);
@@ -133,4 +136,4 @@ if (failures.length) {
   console.error('Visual QA failed:\n- ' + failures.join('\n- '));
   process.exit(1);
 }
-console.log('Visual QA passed: Colts and Detroit authentic images load, layouts do not overflow, menus/dialogs work, key story sections render, and both reports preserve their expected sensitivity behavior.');
+console.log('Visual QA passed: Colts and Detroit authentic images load, layouts do not overflow, report and Detroit-methodology mobile navigation work, key story sections render, and both reports preserve their expected sensitivity behavior.');
