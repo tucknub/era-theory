@@ -34,18 +34,50 @@
   -webkit-clip-path: none !important;
   object-fit: cover !important;
   object-position: 50% 52% !important;
-  -webkit-mask-image: radial-gradient(ellipse 47% 72% at 51% 52%, #000 0 46%, rgba(0,0,0,.96) 58%, rgba(0,0,0,.48) 70%, transparent 84%) !important;
-  mask-image: radial-gradient(ellipse 47% 72% at 51% 52%, #000 0 46%, rgba(0,0,0,.96) 58%, rgba(0,0,0,.48) 70%, transparent 84%) !important;
-  filter: saturate(.78) contrast(1.08) brightness(.82) !important;
+  -webkit-mask-image: radial-gradient(ellipse 52% 62% at 50% 62%, #000 0 48%, rgba(0,0,0,.92) 62%, rgba(0,0,0,.3) 78%, transparent 100%) !important;
+  mask-image: radial-gradient(ellipse 52% 62% at 50% 62%, #000 0 48%, rgba(0,0,0,.92) 62%, rgba(0,0,0,.3) 78%, transparent 100%) !important;
+  filter: saturate(.72) contrast(1.08) brightness(.76) !important;
+  opacity:.80 !important;
 }
 .lions-story-page .lions-sewell > img {
   clip-path: none !important;
   -webkit-clip-path: none !important;
   object-fit: cover !important;
   object-position: 50% 42% !important;
-  -webkit-mask-image: radial-gradient(ellipse 54% 70% at 50% 48%, #000 0 48%, rgba(0,0,0,.96) 60%, rgba(0,0,0,.42) 72%, transparent 87%) !important;
-  mask-image: radial-gradient(ellipse 54% 70% at 50% 48%, #000 0 48%, rgba(0,0,0,.96) 60%, rgba(0,0,0,.42) 72%, transparent 87%) !important;
-  filter: saturate(.82) contrast(1.08) brightness(.86) !important;
+  -webkit-mask-image: radial-gradient(ellipse 55% 62% at 50% 60%, #000 0 50%, rgba(0,0,0,.92) 64%, rgba(0,0,0,.28) 80%, transparent 100%) !important;
+  mask-image: radial-gradient(ellipse 55% 62% at 50% 60%, #000 0 50%, rgba(0,0,0,.92) 64%, rgba(0,0,0,.28) 80%, transparent 100%) !important;
+  filter: saturate(.76) contrast(1.08) brightness(.80) !important;
+  opacity:.82 !important;
+}
+
+/* Hero-only composition polish: make the side photos atmospheric layers rather than panels. */
+.lions-story-page .lions-hero-collage .lions-calvin {
+  left:-1% !important;
+  bottom:-5% !important;
+  width:37% !important;
+  z-index:2 !important;
+}
+.lions-story-page .lions-hero-collage .lions-sewell {
+  right:-1% !important;
+  bottom:-5% !important;
+  width:38% !important;
+  z-index:2 !important;
+}
+.lions-story-page .lions-hero-collage .lions-stafford {
+  left:28% !important;
+  bottom:-1% !important;
+  width:45% !important;
+  z-index:5 !important;
+}
+.lions-story-page .lions-hero-collage .lions-calvin > img,
+.lions-story-page .lions-hero-collage .lions-sewell > img {
+  inset:-5% !important;
+  width:110% !important;
+  height:110% !important;
+}
+.lions-story-page .lions-hero-collage .lions-calvin figcaption,
+.lions-story-page .lions-hero-collage .lions-sewell figcaption {
+  opacity:.78;
 }
 
 /* Chapter 02: use the complete Calvin photograph as a soft-edged historical anchor. */
@@ -85,9 +117,15 @@
 
 /* The Goff trade image is intentionally left as an authentic full-bleed crop. */
 
+@media (max-width:900px) {
+  .lions-story-page .lions-hero-collage .lions-calvin { left:-7% !important; width:42% !important; }
+  .lions-story-page .lions-hero-collage .lions-stafford { left:27% !important; width:47% !important; }
+  .lions-story-page .lions-hero-collage .lions-sewell { right:-6% !important; width:42% !important; }
+}
+
 @media (max-width:720px) {
   .lions-story-page .lions-calvin > img,
-  .lions-story-page .lions-sewell > img { opacity:.88 !important; }
+  .lions-story-page .lions-sewell > img { opacity:.72 !important; }
   .lions-story-page .lions-calvin-photo img,
   .lions-story-page .holmes-visuals img { object-position:50% 44% !important; }
 }
