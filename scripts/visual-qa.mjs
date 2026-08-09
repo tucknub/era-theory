@@ -53,6 +53,10 @@ const mobile = { width: 390, height: 844 };
 
 await screenshotTop('/', 'home-desktop.png', desktop);
 await screenshotTop('/', 'home-mobile.png', mobile);
+await screenshotSection('/', 'quick-verdict', 'home-stories-desktop.png', desktop);
+await screenshotSection('/', 'quick-verdict', 'home-stories-mobile.png', mobile);
+await screenshotSection('/', 'reports', 'home-library-desktop.png', desktop);
+await screenshotSection('/', 'reports', 'home-library-mobile.png', mobile);
 await screenshotTop('/reports/colts/', 'colts-desktop.png', desktop);
 await screenshotTop('/reports/colts/', 'colts-mobile.png', mobile);
 await screenshotTop('/reports/lions/', 'lions-desktop.png', desktop);
@@ -85,9 +89,38 @@ async function testMobileMenu(path, navId, label) {
   if ((await button.getAttribute('aria-expanded')) !== 'true') failures.push(`${label} mobile menu aria-expanded did not become true.`);
   await page.close();
 }
+await testMobileMenu('/', '#home-mobile-nav', 'Homepage');
 await testMobileMenu('/reports/colts/', '#mobile-nav', 'Colts');
 await testMobileMenu('/reports/lions/', '#lions-mobile-nav', 'Lions');
 await testMobileMenu('/research/lions/', '#research-mobile-nav', 'Detroit research');
+
+// The site homepage must behave like a multi-report library, not a Colts-only landing page.
+{
+  const page = await preparePage('/', desktop);
+  const title = (await page.locator('#home-title').textContent())?.trim() || '';
+  if (title !== 'Sports debates, researched all the way through.') failures.push(`Homepage title did not switch to site-first language: ${title}`);
+
+  const chooser = page.locator('#quick-verdict .verdict-lane');
+  if ((await chooser.count()) !== 2) failures.push(`Homepage story chooser expected 2 published reports, found ${await chooser.count()}.`);
+  const chooserText = (await page.locator('#quick-verdict').textContent()) || '';
+  for (const marker of ['Indianapolis Colts','Detroit Lions','Bill Polian','Brad Holmes']) {
+    if (!chooserText.includes(marker)) failures.push(`Homepage story chooser missing marker: ${marker}`);
+  }
+
+  const proofText = (await page.locator('.proof-after-story').textContent()) || '';
+  for (const marker of ['53','729','600,000','729 / 729']) {
+    if (!proofText.includes(marker)) failures.push(`Homepage combined proof totals missing marker: ${marker}`);
+  }
+
+  const libraryText = (await page.locator('#reports').textContent()) || '';
+  for (const marker of ['Which Colts front office actually built the best era?','Who actually changed the Detroit Lions?','003']) {
+    if (!libraryText.includes(marker)) failures.push(`Homepage report library missing marker: ${marker}`);
+  }
+
+  const headerAction = page.locator('.site-header .header-action');
+  if ((await headerAction.textContent())?.trim() !== 'Explore stories') failures.push('Homepage header CTA did not become Explore stories.');
+  await page.close();
+}
 
 async function testDialog(path, dialogId, label) {
   const page = await preparePage(path, desktop);
@@ -136,4 +169,4 @@ if (failures.length) {
   console.error('Visual QA failed:\n- ' + failures.join('\n- '));
   process.exit(1);
 }
-console.log('Visual QA passed: Colts and Detroit authentic images load, layouts do not overflow, report and Detroit-methodology mobile navigation work, key story sections render, and both reports preserve their expected sensitivity behavior.');
+console.log('Visual QA passed: the homepage presents Colts and Lions as first-class stories with correct combined proof totals; authentic images load; layouts do not overflow; homepage/report mobile navigation works; key story sections render; and both reports preserve their expected sensitivity behavior.');
