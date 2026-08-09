@@ -75,6 +75,28 @@
   width:110% !important;
   height:110% !important;
 }
+/* These selectors deliberately match/exceed the base hero rule specificity so the
+   authentic editorial masks actually win the cascade. */
+.lions-story-page .lions-hero-collage .lions-calvin > img {
+  clip-path:none !important;
+  -webkit-clip-path:none !important;
+  object-fit:cover !important;
+  object-position:50% 52% !important;
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.05) 16%,rgba(0,0,0,.42) 31%,rgba(0,0,0,.88) 45%,#000 58%,#000 100%) !important;
+  mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.05) 16%,rgba(0,0,0,.42) 31%,rgba(0,0,0,.88) 45%,#000 58%,#000 100%) !important;
+  filter:saturate(.72) contrast(1.08) brightness(.76) !important;
+  opacity:.80 !important;
+}
+.lions-story-page .lions-hero-collage .lions-sewell > img {
+  clip-path:none !important;
+  -webkit-clip-path:none !important;
+  object-fit:cover !important;
+  object-position:50% 42% !important;
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.04) 14%,rgba(0,0,0,.40) 29%,rgba(0,0,0,.88) 44%,#000 57%,#000 100%) !important;
+  mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.04) 14%,rgba(0,0,0,.40) 29%,rgba(0,0,0,.88) 44%,#000 57%,#000 100%) !important;
+  filter:saturate(.76) contrast(1.08) brightness(.80) !important;
+  opacity:.82 !important;
+}
 .lions-story-page .lions-hero-collage .lions-calvin figcaption,
 .lions-story-page .lions-hero-collage .lions-sewell figcaption {
   opacity:.78;
