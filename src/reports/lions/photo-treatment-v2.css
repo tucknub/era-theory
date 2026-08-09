@@ -34,8 +34,8 @@
   -webkit-clip-path: none !important;
   object-fit: cover !important;
   object-position: 50% 52% !important;
-  -webkit-mask-image: radial-gradient(ellipse 52% 62% at 50% 62%, #000 0 48%, rgba(0,0,0,.92) 62%, rgba(0,0,0,.3) 78%, transparent 100%) !important;
-  mask-image: radial-gradient(ellipse 52% 62% at 50% 62%, #000 0 48%, rgba(0,0,0,.92) 62%, rgba(0,0,0,.3) 78%, transparent 100%) !important;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,.05) 16%, rgba(0,0,0,.42) 31%, rgba(0,0,0,.88) 45%, #000 58%, #000 100%) !important;
+  mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,.05) 16%, rgba(0,0,0,.42) 31%, rgba(0,0,0,.88) 45%, #000 58%, #000 100%) !important;
   filter: saturate(.72) contrast(1.08) brightness(.76) !important;
   opacity:.80 !important;
 }
@@ -44,8 +44,8 @@
   -webkit-clip-path: none !important;
   object-fit: cover !important;
   object-position: 50% 42% !important;
-  -webkit-mask-image: radial-gradient(ellipse 55% 62% at 50% 60%, #000 0 50%, rgba(0,0,0,.92) 64%, rgba(0,0,0,.28) 80%, transparent 100%) !important;
-  mask-image: radial-gradient(ellipse 55% 62% at 50% 60%, #000 0 50%, rgba(0,0,0,.92) 64%, rgba(0,0,0,.28) 80%, transparent 100%) !important;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,.04) 14%, rgba(0,0,0,.40) 29%, rgba(0,0,0,.88) 44%, #000 57%, #000 100%) !important;
+  mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,.04) 14%, rgba(0,0,0,.40) 29%, rgba(0,0,0,.88) 44%, #000 57%, #000 100%) !important;
   filter: saturate(.76) contrast(1.08) brightness(.80) !important;
   opacity:.82 !important;
 }
