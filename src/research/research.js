@@ -46,6 +46,11 @@ function reportCard(report, mode) {
 }
 
 async function hydrateResearchHub() {
+  // `research.js` is shared by the general hub and report-specific methodology pages.
+  // Only the general hub contains #evidence; report-specific pages keep shared menu behavior
+  // without trying to hydrate the cross-report registry from a different relative path.
+  if (!document.querySelector('#evidence')) return;
+
   try {
     const response = await fetch('../data/reports.json', { cache: 'no-store' });
     if (!response.ok) return;
