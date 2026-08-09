@@ -63,6 +63,8 @@ await screenshotTop('/reports/lions/', 'lions-desktop.png', desktop);
 await screenshotTop('/reports/lions/', 'lions-mobile.png', mobile);
 await screenshotTop('/research/', 'research-desktop.png', desktop);
 await screenshotTop('/research/', 'research-mobile.png', mobile);
+await screenshotSection('/research/', 'report-proof', 'research-report-proof-desktop.png', desktop);
+await screenshotSection('/research/', 'report-proof', 'research-report-proof-mobile.png', mobile);
 await screenshotTop('/research/lions/', 'lions-research-desktop.png', desktop);
 await screenshotTop('/research/lions/', 'lions-research-mobile.png', mobile);
 
@@ -92,6 +94,7 @@ async function testMobileMenu(path, navId, label) {
 await testMobileMenu('/', '#home-mobile-nav', 'Homepage');
 await testMobileMenu('/reports/colts/', '#mobile-nav', 'Colts');
 await testMobileMenu('/reports/lions/', '#lions-mobile-nav', 'Lions');
+await testMobileMenu('/research/', '#research-mobile-nav', 'Research hub');
 await testMobileMenu('/research/lions/', '#research-mobile-nav', 'Detroit research');
 
 // The site homepage must behave like a multi-report library, not a Colts-only landing page.
@@ -119,6 +122,28 @@ await testMobileMenu('/research/lions/', '#research-mobile-nav', 'Detroit resear
 
   const headerAction = page.locator('.site-header .header-action');
   if ((await headerAction.textContent())?.trim() !== 'Explore stories') failures.push('Homepage header CTA did not become Explore stories.');
+  await page.close();
+}
+
+// The general methodology entry point must expose both report audits and combined site totals.
+{
+  const page = await preparePage('/research/', desktop);
+  const proof = page.locator('#report-proof');
+  if ((await proof.count()) !== 1) failures.push('Research hub missing #report-proof chooser.');
+  const proofText = (await proof.textContent()) || '';
+  for (const marker of ['Indianapolis Colts','Detroit Lions','401','328','729','53','600,000']) {
+    if (!proofText.includes(marker)) failures.push(`Research hub proof chooser missing marker: ${marker}`);
+  }
+  const detroitLink = proof.locator('a[href="../research/lions/index.html"], a[href="lions/index.html"]');
+  if ((await detroitLink.count()) < 1) failures.push('Research hub missing Detroit methodology link.');
+  const auditText = (await page.locator('.audit-strip').textContent()) || '';
+  for (const marker of ['53','729','729 / 729','600,000']) {
+    if (!auditText.includes(marker)) failures.push(`Research hub combined audit strip missing marker: ${marker}`);
+  }
+  const sourceText = (await page.locator('#sources').textContent()) || '';
+  if (!sourceText.includes('Detroit Lions')) failures.push('Research hub sources do not include Detroit Lions.');
+  const headerAction = page.locator('.site-header .header-action');
+  if ((await headerAction.textContent())?.trim() !== 'Explore stories') failures.push('Research hub header CTA did not become Explore stories.');
   await page.close();
 }
 
@@ -169,4 +194,4 @@ if (failures.length) {
   console.error('Visual QA failed:\n- ' + failures.join('\n- '));
   process.exit(1);
 }
-console.log('Visual QA passed: the homepage presents Colts and Lions as first-class stories with correct combined proof totals; authentic images load; layouts do not overflow; homepage/report mobile navigation works; key story sections render; and both reports preserve their expected sensitivity behavior.');
+console.log('Visual QA passed: homepage and research hub present Colts and Lions as first-class published reports with correct combined totals; authentic images load; layouts do not overflow; mobile navigation works; key story sections render; and both reports preserve their expected sensitivity behavior.');
