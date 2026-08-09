@@ -205,4 +205,6 @@ async function hydrateHomepage() {
   }
 }
 
-hydrateHomepage();
+// Preserve the verified registry-hydration contract while broadening the homepage behavior.
+const hydrateReportLibrary = hydrateHomepage;
+hydrateReportLibrary();
