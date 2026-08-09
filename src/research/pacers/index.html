@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Methodology, evidence inventory, scoring rules, sources and robustness tests for Era Theory Report 003: Indiana Pacers star-to-star conversion." />
+  <meta name="theme-color" content="#001a35" />
+  <title>Pacers Report 003 — Methodology & Sources — Era Theory</title>
+  <link rel="stylesheet" href="../../styles.css" />
+  <link rel="stylesheet" href="../research.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to the methodology</a>
+  <header class="site-header" id="top">
+    <a class="brand" href="../../index.html" aria-label="Era Theory home"><span class="brand-mark" aria-hidden="true">ET</span><span class="brand-copy"><strong>ERA THEORY</strong><small>REPORT 003 · PROVE IT</small></span></a>
+    <nav class="desktop-nav" aria-label="Research navigation"><a href="#quick">Quick version</a><a href="#pacers-audit">Evidence</a><a href="#pacers-model">Scoring</a><a href="#pacers-tests">Robustness</a><a href="#pacers-limits">Limits</a></nav>
+    <button class="menu-button" aria-expanded="false" aria-controls="research-mobile-nav">Menu</button>
+    <a class="header-action" href="../../reports/pacers/index.html">Back to the Pacers story</a>
+  </header>
+  <nav class="mobile-nav" id="research-mobile-nav" aria-label="Mobile research navigation" hidden><a href="#quick">Quick version</a><a href="#pacers-audit">Evidence</a><a href="#pacers-model">Scoring</a><a href="#pacers-tests">Robustness</a><a href="#pacers-limits">Limits</a><a href="../../reports/pacers/index.html">Back to the story</a></nav>
+
+  <main id="main" class="research-main">
+    <section class="research-hero">
+      <p class="research-kicker">Report 003 · Indiana Pacers · 2010–2026</p>
+      <h1>How did we test the star-to-star conversion story?</h1>
+      <p class="research-lead">This report does not rank general managers. It compares three competitive cores and asks whether Indiana repeatedly preserved enough star value to build the next one without relying on a planned multi-year bottom-out.</p>
+      <div class="hero-actions"><a class="button primary" href="#quick">Simple version</a><a class="button secondary" href="#pacers-model">Exact scoring</a></div>
+      <div class="research-promise"><strong>Published conclusion:</strong><span>Haliburton Core 80.5 · Paul George Core 73.5 · Oladipo/Sabonis Core 55.0.</span></div>
+    </section>
+
+    <section class="research-section quick-method" id="quick">
+      <div class="research-heading"><p>Quick version</p><h2>We followed the value, not just the names.</h2></div>
+      <div class="simple-steps">
+        <article><b>1</b><h3>Define the competitive cores</h3><p>George 2010–17, Oladipo/Sabonis 2017–22, Haliburton 2022–26.</p></article>
+        <article><b>2</b><h3>Track the actual chain</h3><p>George → Oladipo/Sabonis → Haliburton, while keeping side branches like Oladipo→LeVert separate.</p></article>
+        <article><b>3</b><h3>Keep categories separate</h3><p>Drafting, trades, star succession, results and resilience cannot all claim credit for the same move.</p></article>
+        <article><b>4</b><h3>Keep the bad seasons</h3><p>The 19–63 Haliburton-less season remains in the record instead of being removed as inconvenient context.</p></article>
+        <article><b>5</b><h3>Try to break the verdict</h3><p>Named philosophies, leave-one-out tests and 300,000 random-weight models measure how fragile the ranking is.</p></article>
+      </div>
+      <div class="audit-strip" aria-label="Pacers research audit summary"><div><strong>16</strong><span>completed seasons</span></div><div><strong>178</strong><span>core evidence records</span></div><div><strong>178 / 178</strong><span>records source-linked</span></div><div><strong>300,000</strong><span>random-weight tests</span></div></div>
+    </section>
+
+    <section class="research-section" id="pacers-audit">
+      <div class="research-heading"><p>Evidence inventory</p><h2>What counts in the 178?</h2></div>
+      <p class="research-intro">Only core row-level evidence registers are counted once. Dashboards, summary formulas, case-study prose and repeated conclusions are not counted again.</p>
+      <div class="evidence-lines">
+        <article><b>16</b><div><h3>Completed seasons</h3><p>Every Pacers season from 2010–11 through 2025–26.</p></div></article>
+        <article><b>16</b><div><h3>Star-succession seasons</h3><p>Who actually carried each season, who supported them, and how availability changed the hierarchy.</p></div></article>
+        <article><b>5</b><div><h3>Star-conversion events</h3><p>George, Oladipo, Sabonis and the major supporting-star acceleration points.</p></div></article>
+        <article><b>16</b><div><h3>Draft classes</h3><p>2010–2025, with 2024–25 withheld from mature scoring.</p></div></article>
+        <article><b>32</b><div><h3>Notable draft picks</h3><p>Retained players, acquired rookie rights and immediate draft-night rights trades.</p></div></article>
+        <article><b>29</b><div><h3>Major roster/resource moves</h3><p>Trades, signings, extensions, exit strategies and one unresolved 2026 move.</p></div></article>
+        <article><b>26</b><div><h3>Coaching evidence</h3><p>16 coaching-season rows plus 10 major hiring, firing or extension decisions.</p></div></article>
+        <article><b>28</b><div><h3>Major honor events</h3><p>All-Star, All-NBA, All-Defense, Most Improved Player and Conference Finals MVP honors earned as Pacers.</p></div></article>
+        <article><b>10</b><div><h3>Adversity shocks</h3><p>Material injuries/availability events used to test preparation, replacement and result preservation.</p></div></article>
+      </div>
+      <div class="private-workbook"><strong>Why isn't the full workbook public?</strong><p>The organized 28-tab research base stays private. Public transparency comes from the exact inventory above, formulas below, source policy, exclusions, limitations and an interactive sensitivity tool on the story page.</p></div>
+    </section>
+
+    <section class="research-section" id="pacers-model">
+      <div class="research-heading"><p>Final model</p><h2>Seven basketball questions, weighted before the verdict.</h2></div>
+      <table class="weight-table"><thead><tr><th>Fan question</th><th>Research dimension</th><th>Weight</th></tr></thead><tbody>
+        <tr><td>How good was the team across the whole cycle?</td><td>Team Strength & Results</td><td>15%</td></tr>
+        <tr><td>How far did the core actually go?</td><td>Postseason Ceiling & Conversion</td><td>20%</td></tr>
+        <tr><td>How well did Indiana turn one star into the next?</td><td>Star Succession & Asset Conversion</td><td>20%</td></tr>
+        <tr><td>Did the core keep producing useful players?</td><td>Draft & Development</td><td>15%</td></tr>
+        <tr><td>Were trades, contracts and assets used well?</td><td>Roster-Resource Strategy</td><td>10%</td></tr>
+        <tr><td>Did the coach and playing style fit the roster?</td><td>Coaching & System Identity</td><td>10%</td></tr>
+        <tr><td>What happened when the roster broke?</td><td>Availability & Resilience</td><td>10%</td></tr>
+      </tbody></table>
+      <details class="formula-details"><summary>Show the construction behind those categories</summary><div class="formula-lines">
+        <p><b>Team Strength:</b> 70% regular-season index + 30% elite-talent score. Regular-season index = 60% win percentage + 25% winning-season rate + 15% positive-net-rating-season rate.</p>
+        <p><b>Postseason:</b> 25 points playoff-berth rate + 45 normalized points for series wins per core-season + 30-point deepest-run ladder.</p>
+        <p><b>Star succession:</b> entry/creation quality 40% + internal succession/overlap 30% + exit asset preservation 30%. If an exit has not happened, applicable components are renormalized instead of assigning zero.</p>
+        <p><b>Draft/development:</b> mature-class index after three completed NBA seasons. A player selected for another team in a prearranged draft-night trade receives zero Pacers development credit.</p>
+        <p><b>Resources:</b> cost/leverage 30 + fit/timing 25 + value delivered 25 + asset preservation/flexibility 20.</p>
+        <p><b>System:</b> continuity 20 + roster-system fit 30 + adaptability 25 + playoff translation 25. League ranks are used so raw ratings from different NBA scoring environments are not compared naively.</p>
+        <p><b>Resilience:</b> each qualifying shock = preparedness 25 + replacement execution 25 + system adjustment 25 + result preservation 25.</p>
+      </div></details>
+      <div class="result-proof"><article><span>1st</span><strong>80.5</strong><h3>Haliburton Core</h3><p>Wins five of seven dimensions.</p></article><article><span>2nd</span><strong>73.5</strong><h3>Paul George Core</h3><p>Wins team strength and resilience.</p></article><article><span>3rd</span><strong>55.0</strong><h3>Oladipo / Sabonis</h3><p>Strong bridge, no series wins.</p></article></div>
+    </section>
+
+    <section class="research-section" id="pacers-tests">
+      <div class="research-heading"><p>Robustness</p><h2>This winner is strong—but not mathematically untouchable.</h2></div>
+      <div class="result-proof"><article><span>Named philosophies</span><strong>7 / 8</strong><h3>Haliburton wins</h3><p>George wins the resilience-heavy philosophy.</p></article><article><span>Leave one dimension out</span><strong>7 / 7</strong><h3>Haliburton wins</h3><p>No single category is required for first place.</p></article><article><span>Bounded random models</span><strong>91.6%</strong><h3>Haliburton wins</h3><p>George still wins 8.4% when every category must remain between 5% and 35%.</p></article></div>
+      <div class="counterexample-box"><h3>What is the real counterargument?</h3><p>Make resilience 30%, reduce the emphasis on postseason and development, and the Paul George core wins about 77.7 to 76.6. That is a coherent fan philosophy: value the longer regular-season contender and its ability to survive major injuries more than the newer core's Finals ceiling.</p></div>
+      <p class="research-intro"><strong>Random-weight results:</strong> 200,000 unrestricted models — Haliburton 80.248%, George 19.752%, O/S 0%. 100,000 bounded plausible models — Haliburton 91.62%, George 8.38%, O/S 0%. Fixed simulation seed: 42.</p>
+    </section>
+
+    <section class="research-section" id="pacers-sources">
+      <div class="research-heading"><p>Source policy</p><h2>Use primary/official records first, then established historical databases.</h2></div>
+      <div class="source-lines">
+        <article><h3>NBA / Indiana Pacers</h3><p>Trade announcements, player honors, injury updates, coaching decisions, extensions and official historical context.</p><a href="https://www.nba.com/pacers/" target="_blank" rel="noreferrer">Pacers official source material ↗</a></article>
+        <article><h3>Basketball Reference</h3><p>Season records, team efficiency, pace, player and postseason historical cross-checks.</p><a href="https://www.basketball-reference.com/teams/IND/" target="_blank" rel="noreferrer">Pacers historical index ↗</a></article>
+        <article><h3>Authentic photography</h3><p>Real players use rights-reviewed Wikimedia Commons photographs. Creator, license and modification records are published separately.</p><a href="../../image-credits.html">Image credits & rights →</a></article>
+      </div>
+    </section>
+
+    <section class="research-section" id="pacers-limits">
+      <div class="research-heading"><p>Limits and exclusions</p><h2>What this report refuses to pretend it knows.</h2></div>
+      <div class="limit-lines">
+        <article><h3>The Zubac trade is unresolved</h3><p>The February 2026 trade is recorded, including the known premium asset cost, but excluded from the mature resource average because five Indiana games are not enough to grade the return.</p></article>
+        <article><h3>2024–25 draft classes are immature</h3><p>They remain tracked but are not forced into mature development scores before three NBA seasons exist.</p></article>
+        <article><h3>Injuries are not front-office “mistakes”</h3><p>The model grades preparation, replacement and adaptation—not moral responsibility for an injury occurring.</p></article>
+        <article><h3>“No tank” is a qualified claim</h3><p>Indiana had losing transition years and a 19–63 injury season. The claim is that the franchise repeatedly preserved star value rather than relying on a planned multi-year bottom-out as its primary path to the next centerpiece.</p></article>
+        <article><h3>Core boundaries require judgment</h3><p>Transition seasons are assigned by opening-season competitive identity. The 2021–22 season remains in the Sabonis core even though Haliburton arrived in February.</p></article>
+        <article><h3>300,000 tests are not truth probability</h3><p>They measure how often a ranking survives alternate priorities. They do not make a sports-history conclusion objectively 91.6% true.</p></article>
+      </div>
+      <div class="research-next"><div><p class="research-kicker">Back to the story</p><h2>The proof should make the argument clearer—not make the fan live inside the spreadsheet.</h2></div><a class="button primary" href="../../reports/pacers/index.html">Return to Report 003</a></div>
+    </section>
+  </main>
+
+  <footer><div><strong>ERA THEORY</strong><span>REPORT 003 · METHODOLOGY</span></div><p>178 / 178 core evidence records source-linked. Full 28-tab research workbook retained privately.</p></footer>
+  <script src="../research.js" defer></script>
+</body>
+</html>
