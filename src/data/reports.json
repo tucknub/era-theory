@@ -24,11 +24,7 @@
       "dimensions": 7,
       "coreEvidenceRecords": 401,
       "randomWeightSimulations": 300000,
-      "requiredMarkers": [
-        "Final weighted verdict",
-        "The Ballard contradiction",
-        "Sensitivity lab"
-      ]
+      "requiredMarkers": ["Final weighted verdict","The Ballard contradiction","Sensitivity lab"]
     },
     {
       "number": "002",
@@ -53,11 +49,32 @@
       "dimensions": 7,
       "coreEvidenceRecords": 328,
       "randomWeightSimulations": 300000,
-      "requiredMarkers": [
-        "Final weighted verdict",
-        "The Quinn conversion failure",
-        "Sensitivity lab"
-      ]
+      "requiredMarkers": ["Final weighted verdict","The Quinn conversion failure","Sensitivity lab"]
+    },
+    {
+      "number": "003",
+      "slug": "pacers",
+      "title": "Indiana Pacers Conversion Chain",
+      "publicQuestion": "How did the Pacers keep turning one star into the next?",
+      "sport": "Basketball",
+      "league": "NBA",
+      "subject": "Indiana Pacers",
+      "subtitle": "Paul George → Oladipo/Sabonis → Haliburton",
+      "summary": "How Indiana preserved star value across three competitive cores, reached the 2025 NBA Finals, and did it without a traditional multi-year bottom-out rebuild.",
+      "fanSummary": "The Haliburton core is the best overall. The Paul George core was stronger over a longer regular-season sample and far more resilient. Indiana's defining organizational skill was repeatedly converting one centerpiece into the ingredients for the next competitive core.",
+      "status": "published",
+      "route": "reports/pacers/index.html",
+      "methodologyRoute": "research/pacers/index.html",
+      "scoringCutoff": "Completed seasons through 2025-26",
+      "lastCompletedSeason": 2026,
+      "researchVisibility": "private",
+      "finalLeader": "Haliburton Core",
+      "finalScore": 80.5,
+      "resultLabel": "Winning core score",
+      "dimensions": 7,
+      "coreEvidenceRecords": 178,
+      "randomWeightSimulations": 300000,
+      "requiredMarkers": ["Final weighted verdict","Star-to-star conversion","Sensitivity lab"]
     }
   ]
 }
