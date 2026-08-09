@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="How Era Theory researched the Detroit Lions front-office eras from 2001 through 2025." />
+  <meta name="theme-color" content="#06111d" />
+  <title>How we researched Detroit — Era Theory</title>
+  <link rel="stylesheet" href="../../styles.css" />
+  <link rel="stylesheet" href="../research.css" />
+  <style>
+    .detroit-proof{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin:2rem 0 3rem;background:rgba(105,198,255,.15);border-block:1px solid rgba(105,198,255,.14)}
+    .detroit-proof div{padding:1.4rem;background:#06111d}.detroit-proof strong{display:block;font-family:var(--display);font-size:clamp(2rem,4vw,3.7rem);color:#eef7fc}.detroit-proof span{color:#8397aa;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em}
+    .report-jump{display:flex;gap:.7rem;flex-wrap:wrap;margin:1.5rem 0 0}.report-jump a{border:1px solid rgba(105,198,255,.18);padding:.7rem .85rem;color:#cfe8f6;text-decoration:none}.report-jump a[aria-current="page"]{border-color:#29a9e8;color:#fff}
+    .attribution-rule{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(41,169,232,.17);margin-top:1.5rem}.attribution-rule article{background:#071421;padding:1.3rem}.attribution-rule span{color:#29a9e8;font-family:var(--display);font-size:.7rem;letter-spacing:.1em}.attribution-rule strong{display:block;font-family:var(--display);font-size:1.8rem;margin:.35rem 0}.attribution-rule p{color:#91a5b8;line-height:1.55}
+    @media(max-width:760px){.detroit-proof{grid-template-columns:1fr 1fr}.attribution-rule{grid-template-columns:1fr}}
+  </style>
+</head>
+<body class="research-page">
+  <a class="skip-link" href="#main">Skip to the method</a>
+  <header class="site-header" id="top">
+    <a class="brand" href="../../index.html" aria-label="Era Theory home"><span class="brand-mark" aria-hidden="true">ET</span><span class="brand-copy"><strong>ERA THEORY</strong><small>HOW THE RESEARCH WORKS</small></span></a>
+    <nav class="desktop-nav" aria-label="Research navigation"><a href="#simple">The five steps</a><a href="#questions">What we measured</a><a href="#sources">Sources</a><a href="#robustness">Stress test</a><a href="#limits">Limits</a></nav>
+    <button class="menu-button" aria-expanded="false" aria-controls="research-mobile-nav">Menu</button>
+    <a class="header-action" href="../../reports/lions/index.html">Back to Detroit</a>
+  </header>
+  <nav class="mobile-nav" id="research-mobile-nav" aria-label="Mobile research navigation" hidden><a href="#simple">The five steps</a><a href="#questions">What we measured</a><a href="#sources">Sources</a><a href="#robustness">Stress test</a><a href="#limits">Limits</a><a href="../../reports/lions/index.html">Back to Detroit</a></nav>
+
+  <main id="main">
+    <section class="research-hero">
+      <div><h1>How do we know what changed in Detroit?</h1><p>We researched every completed Lions season from 2001–2025, then compared the Millen, Mayhew, Quinn and Holmes eras across the same seven football questions used in Report 001. The raw workbook stays private; the rules, evidence inventory, source policy and weaknesses of the model are public here.</p><div class="report-jump"><a href="../index.html">Colts methodology</a><a href="./" aria-current="page">Detroit methodology</a></div></div>
+      <div class="detroit-proof"><div><strong>25</strong><span>completed seasons</span></div><div><strong>328</strong><span>core evidence records</span></div><div><strong>328 / 328</strong><span>records source-linked</span></div><div><strong>300,000</strong><span>random-weight tests</span></div></div>
+    </section>
+
+    <section class="research-section" id="simple">
+      <div class="research-heading"><p>Start here</p><h2>Five steps. That is the whole idea.</h2></div>
+      <div class="method-steps">
+        <article><b>1</b><h3>Define the eras</h3><p>Millen is scored from 2001–2008, Mayhew from 2009–2015, Quinn from 2016–2020 and Holmes from 2021–2025. The 2008 transition is treated as a Millen-built season because he constructed the opening roster before being fired after Week 3.</p></article>
+        <article><b>2</b><h3>Collect what happened</h3><p>Seasons, playoffs, quarterbacks, draft classes, notable picks, major roster moves, coaching decisions, elite player seasons and major adversity cases all get their own structured evidence rows.</p></article>
+        <article><b>3</b><h3>Compare more than wins</h3><p>Winning matters most, but front offices also have to solve quarterback, find and develop players, allocate resources, align coaching and survive when the plan breaks.</p></article>
+        <article><b>4</b><h3>Keep attribution honest</h3><p>A GM does not get the same credit for creating a solution, inheriting it and maintaining it, or converting it into the next solution. Detroit made that distinction especially important at quarterback.</p></article>
+        <article><b>5</b><h3>Try to break the answer</h3><p>We change the weights, remove one category at a time and run random-weight models. If the winner depends on one preferred formula, the public verdict has to say so.</p></article>
+      </div>
+    </section>
+
+    <section class="research-section" id="questions">
+      <div class="research-heading"><p>Seven football questions</p><h2>Results still matter most.</h2><p>The published weights are the same NFL framework used for Indianapolis so the reports remain comparable.</p></div>
+      <div class="weight-list">
+        <article><strong>25%</strong><div><h3>Who won the most?</h3><p>Regular-season win rate and the rate of producing winning seasons.</p></div></article>
+        <article><strong>20%</strong><div><h3>Who actually won in January?</h3><p>Playoff appearances, division titles, deep runs, Super Bowl trips and championships per season.</p></div></article>
+        <article><strong>15%</strong><div><h3>Who solved quarterback?</h3><p>Objective starter stability plus an explicit interpretation of who created, inherited or converted the quarterback solution.</p></div></article>
+        <article><strong>15%</strong><div><h3>Who found and developed the best players?</h3><p>65% mature draft index and 35% elite player/homegrown-core index. Detroit's 2023–2025 classes are tracked but deliberately excluded from mature class grading.</p></div></article>
+        <article><strong>10%</strong><div><h3>Who made the smartest roster moves?</h3><p>Major trades, signings, extensions and exits, using average move quality, positive-move rate and catastrophic-failure avoidance.</p></div></article>
+        <article><strong>10%</strong><div><h3>Who built the best coaching setup?</h3><p>Coaching continuity plus major hiring, retention, firing and staff-development decisions. Ownership-led choices are not falsely credited to the GM alone.</p></div></article>
+        <article><strong>5%</strong><div><h3>Who survived adversity?</h3><p>Preparation, replacement execution, result preservation and in-season adjustment during major availability shocks. We grade the response, never blame the organization for an injury.</p></div></article>
+      </div>
+      <div class="attribution-rule"><article><span>CREATE</span><strong>Mayhew → Stafford</strong><p>Mayhew used the No. 1 pick to create a 12-year franchise-quarterback answer.</p></article><article><span>INHERIT / RETAIN</span><strong>Quinn → Stafford</strong><p>Quinn gets stability and retention credit for Stafford, but not acquisition credit.</p></article><article><span>CONVERT</span><strong>Holmes → Goff + capital</strong><p>Holmes gets succession credit for turning Stafford's exit into another long-term quarterback plus premium assets.</p></article></div>
+    </section>
+
+    <section class="research-section" id="sources">
+      <div class="research-heading"><p>Evidence integrity</p><h2>Every core evidence row has a source.</h2></div>
+      <div class="source-audit"><div><strong>25 / 25</strong><span>Season results</span></div><div><strong>8 / 8</strong><span>Major QB decisions</span></div><div><strong>25 / 25</strong><span>Draft classes</span></div><div><strong>80 / 80</strong><span>Notable draft picks</span></div><div><strong>61 / 61</strong><span>Major roster moves</span></div><div><strong>25 / 25</strong><span>Coaching seasons</span></div><div><strong>27 / 27</strong><span>Coaching decisions</span></div><div><strong>60 / 60</strong><span>Elite player-seasons</span></div><div><strong>17 / 17</strong><span>Adversity cases</span></div></div>
+      <p class="research-callout"><strong>328 of 328 core records have row-level source coverage.</strong> Primary source families include Detroit Lions official material and Pro Football Reference, with other reliable sources used for event-specific cross-checks when needed. Source coverage makes the evidence auditable; it does not make judgment-coded grades indisputable.</p>
+    </section>
+
+    <section class="research-section" id="robustness">
+      <div class="research-heading"><p>Can the formula be blamed?</p><h2>Detroit is unusually hard to break.</h2></div>
+      <div class="stress-grid"><article><strong>8 / 8</strong><span>named weighting philosophies won by Holmes</span></article><article><strong>7 / 7</strong><span>leave-one-category-out models won by Holmes</span></article><article><strong>200,000</strong><span>unrestricted random-weight tests: Holmes first every time</span></article><article><strong>100,000</strong><span>bounded 5–35% tests: Holmes first every time</span></article></div>
+      <p class="research-callout"><strong>Why?</strong> Holmes currently leads all seven underlying dimensions. With nonnegative weights on those same seven categories, another era cannot pass him unless the evidence or category scores themselves change. That is a robustness result about this model—not a claim that Holmes has a 100% probability of being objectively correct.</p>
+    </section>
+
+    <section class="research-section" id="limits">
+      <div class="research-heading"><p>What the model cannot claim</p><h2>The verdict is clear. The active era is not finished.</h2></div>
+      <div class="limit-list"><article><h3>No Super Bowl trip through 2025</h3><p>The Holmes era is the strongest in this 2001–2025 comparison without yet reaching the Super Bowl.</p></article><article><h3>Three recent draft classes remain held out</h3><p>2023, 2024 and 2025 are visible evidence but excluded from mature class averages. Early success is not turned into a permanent grade.</p></article><article><h3>2025 matters</h3><p>The 9–8 regression and another injury-heavy season prevent the turnaround from being presented as invulnerable.</p></article><article><h3>Scores contain judgment</h3><p>Move grades, adversity-response scores and some category construction require documented human judgment. Sensitivity testing shows whether reasonable changes overturn the conclusion; it does not eliminate subjectivity.</p></article></div>
+      <p class="research-callout"><strong>Why isn't the entire workbook public?</strong> The native 28-tab research database is private so the organized work product is not simply handed away. The public site exposes the evidence inventory, formulas, cutoffs, source policy, limitations and robustness results needed to understand and challenge the conclusion.</p>
+    </section>
+  </main>
+
+  <footer><div><strong>ERA THEORY</strong><span>Report 002 · Detroit Lions · completed seasons through 2025</span></div><p><a href="../../reports/lions/index.html">Return to the Detroit story</a> · <a href="../../image-credits.html">Authentic image credits</a></p></footer>
+  <script src="../research.js" defer></script>
+</body>
+</html>

@@ -1,11 +1,11 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 
-export async function archiveColtsAssets({ root, dist }) {
-  const manifestPath = resolve(root, 'src', 'data', 'colts-archive.json');
+export async function archiveLionsAssets({ root, dist }) {
+  const manifestPath = resolve(root, 'src', 'data', 'lions-archive.json');
   const manifest = JSON.parse(await readFile(manifestPath, 'utf8'));
   if (!Array.isArray(manifest.assets) || manifest.assets.length === 0) {
-    throw new Error('Colts archive manifest contains no assets.');
+    throw new Error('Lions archive manifest contains no assets.');
   }
 
   const approved = manifest.assets.filter(asset => asset.status === 'approved');
@@ -33,18 +33,14 @@ export async function archiveColtsAssets({ root, dist }) {
     const bytes = Buffer.from(await response.arrayBuffer());
     if (bytes.length < 10_000) throw new Error(`Archive asset ${asset.id} is unexpectedly small (${bytes.length} bytes).`);
     await writeFile(resolve(archiveDir, filename), bytes);
-    archived.push({
-      ...asset,
-      localSrc: `/assets/archive/${filename}`,
-      bytes: bytes.length
-    });
+    archived.push({ ...asset, localSrc: `/assets/archive/${filename}`, bytes: bytes.length });
   }
 
   await writeFile(
-    resolve(archiveDir, 'colts-manifest.json'),
+    resolve(archiveDir, 'lions-manifest.json'),
     JSON.stringify({ version: manifest.version, policy: manifest.policy, assets: archived }, null, 2) + '\n'
   );
 
-  console.log(`Archived ${archived.length} rights-approved Colts images.`);
+  console.log(`Archived ${archived.length} rights-approved Detroit Lions images.`);
   return archived;
 }

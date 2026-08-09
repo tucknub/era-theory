@@ -12,9 +12,7 @@ const failures = [];
 async function preparePage(path, viewport) {
   const page = await browser.newPage({ viewport });
   const consoleErrors = [];
-  page.on('console', message => {
-    if (message.type() === 'error') consoleErrors.push(message.text());
-  });
+  page.on('console', message => { if (message.type() === 'error') consoleErrors.push(message.text()); });
   page.on('pageerror', error => consoleErrors.push(error.message));
   await page.goto(`${base}${path}`, { waitUntil: 'networkidle' });
   await page.evaluate(() => document.fonts?.ready);
@@ -22,19 +20,11 @@ async function preparePage(path, viewport) {
   const metrics = await page.evaluate(() => ({
     scrollWidth: document.documentElement.scrollWidth,
     innerWidth: window.innerWidth,
-    brokenImages: [...document.images]
-      .filter(image => !image.complete || image.naturalWidth === 0)
-      .map(image => image.getAttribute('src')),
+    brokenImages: [...document.images].filter(image => !image.complete || image.naturalWidth === 0).map(image => image.getAttribute('src')),
   }));
-  if (metrics.scrollWidth > metrics.innerWidth + 2) {
-    failures.push(`${path} ${viewport.width}px: horizontal overflow ${metrics.scrollWidth} > ${metrics.innerWidth}`);
-  }
-  if (metrics.brokenImages.length) {
-    failures.push(`${path} ${viewport.width}px: broken images ${metrics.brokenImages.join(', ')}`);
-  }
-  if (consoleErrors.length) {
-    failures.push(`${path} ${viewport.width}px: console/page errors ${consoleErrors.join(' | ')}`);
-  }
+  if (metrics.scrollWidth > metrics.innerWidth + 2) failures.push(`${path} ${viewport.width}px: horizontal overflow ${metrics.scrollWidth} > ${metrics.innerWidth}`);
+  if (metrics.brokenImages.length) failures.push(`${path} ${viewport.width}px: broken images ${metrics.brokenImages.join(', ')}`);
+  if (consoleErrors.length) failures.push(`${path} ${viewport.width}px: console/page errors ${consoleErrors.join(' | ')}`);
   return page;
 }
 
@@ -44,11 +34,11 @@ async function screenshotTop(path, name, viewport) {
   await page.close();
 }
 
-async function screenshotSection(section, name, viewport) {
-  const page = await preparePage('/reports/colts/', viewport);
+async function screenshotSection(path, section, name, viewport) {
+  const page = await preparePage(path, viewport);
   const locator = page.locator(`#${section}`);
   if (await locator.count() !== 1) {
-    failures.push(`Missing unique #${section}`);
+    failures.push(`${path}: missing unique #${section}`);
   } else {
     await locator.scrollIntoViewIfNeeded();
     await page.evaluate(() => window.scrollBy(0, -88));
@@ -65,64 +55,85 @@ await screenshotTop('/', 'home-desktop.png', desktop);
 await screenshotTop('/', 'home-mobile.png', mobile);
 await screenshotTop('/reports/colts/', 'colts-desktop.png', desktop);
 await screenshotTop('/reports/colts/', 'colts-mobile.png', mobile);
+await screenshotTop('/reports/lions/', 'lions-desktop.png', desktop);
+await screenshotTop('/reports/lions/', 'lions-mobile.png', mobile);
 await screenshotTop('/research/', 'research-desktop.png', desktop);
 await screenshotTop('/research/', 'research-mobile.png', mobile);
+await screenshotTop('/research/lions/', 'lions-research-desktop.png', desktop);
+await screenshotTop('/research/lions/', 'lions-research-mobile.png', mobile);
 
 for (const section of ['verdict','eras','questions','results','polian','grigson','ballard','quarterback','drafts','transactions','coaching','evidence','sensitivity','final']) {
-  await screenshotSection(section, `colts-${section}-desktop.png`, desktop);
+  await screenshotSection('/reports/colts/', section, `colts-${section}-desktop.png`, desktop);
 }
 for (const section of ['polian','grigson','ballard','quarterback','evidence','sensitivity','final']) {
-  await screenshotSection(section, `colts-${section}-mobile.png`, mobile);
+  await screenshotSection('/reports/colts/', section, `colts-${section}-mobile.png`, mobile);
 }
 
-// Mobile menu behavior.
-{
-  const page = await preparePage('/reports/colts/', mobile);
+for (const section of ['verdict','eras','questions','millen','mayhew','stafford','quinn','patricia','holmes','trade','development','resilience','evidence','sensitivity','final']) {
+  await screenshotSection('/reports/lions/', section, `lions-${section}-desktop.png`, desktop);
+}
+for (const section of ['millen','mayhew','stafford','quinn','holmes','trade','development','resilience','evidence','sensitivity','final']) {
+  await screenshotSection('/reports/lions/', section, `lions-${section}-mobile.png`, mobile);
+}
+
+async function testMobileMenu(path, navId, label) {
+  const page = await preparePage(path, mobile);
   const button = page.locator('.menu-button');
   await button.click();
-  const nav = page.locator('#mobile-nav');
-  if (!(await nav.isVisible())) failures.push('Colts mobile navigation did not open.');
-  if ((await button.getAttribute('aria-expanded')) !== 'true') failures.push('Colts mobile menu aria-expanded did not become true.');
+  const nav = page.locator(navId);
+  if (!(await nav.isVisible())) failures.push(`${label} mobile navigation did not open.`);
+  if ((await button.getAttribute('aria-expanded')) !== 'true') failures.push(`${label} mobile menu aria-expanded did not become true.`);
   await page.close();
 }
+await testMobileMenu('/reports/colts/', '#mobile-nav', 'Colts');
+await testMobileMenu('/reports/lions/', '#lions-mobile-nav', 'Lions');
+await testMobileMenu('/research/lions/', '#research-mobile-nav', 'Detroit research');
 
-// Methodology dialog behavior.
-{
-  const page = await preparePage('/reports/colts/', desktop);
+async function testDialog(path, dialogId, label) {
+  const page = await preparePage(path, desktop);
   await page.locator('[data-open-methodology]').first().click();
-  const dialog = page.locator('#methodology-dialog');
-  if (!(await dialog.isVisible())) failures.push('Methodology dialog did not open.');
+  const dialog = page.locator(dialogId);
+  if (!(await dialog.isVisible())) failures.push(`${label} methodology dialog did not open.`);
   await page.locator('.dialog-close').click();
-  if (await dialog.isVisible()) failures.push('Methodology dialog did not close.');
+  if (await dialog.isVisible()) failures.push(`${label} methodology dialog did not close.`);
   await page.close();
 }
+await testDialog('/reports/colts/', '#methodology-dialog', 'Colts');
+await testDialog('/reports/lions/', '#lions-methodology-dialog', 'Lions');
 
-// Sensitivity presets must produce the known counterexamples.
+// Colts sensitivity preserves the known counterexamples.
 {
   const page = await preparePage('/reports/colts/', desktop);
   await page.locator('#sensitivity').scrollIntoViewIfNeeded();
   const select = page.locator('#scenario');
   const submit = page.locator('#model-controls button[type="submit"]');
   const winner = page.locator('#model-winner');
-
-  const cases = [
-    ['published', 'Bill Polian'],
-    ['draftOnly', 'Chris Ballard'],
-    ['resilienceOnly', 'Ryan Grigson'],
-  ];
-  for (const [scenario, expected] of cases) {
-    await select.selectOption(scenario);
-    await submit.click();
+  for (const [scenario, expected] of [['published','Bill Polian'],['draftOnly','Chris Ballard'],['resilienceOnly','Ryan Grigson']]) {
+    await select.selectOption(scenario); await submit.click();
     const actual = (await winner.textContent())?.trim();
-    if (actual !== expected) failures.push(`Sensitivity ${scenario}: expected ${expected}, got ${actual}`);
+    if (actual !== expected) failures.push(`Colts sensitivity ${scenario}: expected ${expected}, got ${actual}`);
+  }
+  await page.close();
+}
+
+// Detroit's defining robustness property: Holmes remains first even in the extreme models.
+{
+  const page = await preparePage('/reports/lions/', desktop);
+  await page.locator('#sensitivity').scrollIntoViewIfNeeded();
+  const select = page.locator('#lions-scenario');
+  const submit = page.locator('#lions-model-controls button[type="submit"]');
+  const winner = page.locator('#lions-model-winner');
+  for (const scenario of ['published','draftOnly','resilienceOnly']) {
+    await select.selectOption(scenario); await submit.click();
+    const actual = (await winner.textContent())?.trim();
+    if (actual !== 'Brad Holmes') failures.push(`Lions sensitivity ${scenario}: expected Brad Holmes, got ${actual}`);
   }
   await page.close();
 }
 
 await browser.close();
-
 if (failures.length) {
   console.error('Visual QA failed:\n- ' + failures.join('\n- '));
   process.exit(1);
 }
-console.log('Visual QA passed: authentic images load, layouts do not overflow, menus/dialogs work, key story sections render, and sensitivity counterexamples remain correct.');
+console.log('Visual QA passed: Colts and Detroit authentic images load, layouts do not overflow, report and Detroit-methodology mobile navigation work, key story sections render, and both reports preserve their expected sensitivity behavior.');

@@ -29,6 +29,35 @@
         "The Ballard contradiction",
         "Sensitivity lab"
       ]
+    },
+    {
+      "number": "002",
+      "slug": "lions",
+      "title": "Detroit Lions Turnaround",
+      "publicQuestion": "Who actually changed the Detroit Lions?",
+      "sport": "Football",
+      "league": "NFL",
+      "subject": "Detroit Lions",
+      "subtitle": "Millen vs. Mayhew vs. Quinn vs. Holmes",
+      "summary": "How Detroit went from 0–16 to a contender—and why the turnaround was bigger than one trade, one draft or one coach.",
+      "fanSummary": "Holmes built the strongest complete organization. Mayhew was much better than the playoff record suggests. Quinn had useful inputs but broke the conversion system. Millen had isolated hits that never compounded.",
+      "status": "published",
+      "route": "reports/lions/index.html",
+      "methodologyRoute": "research/lions/index.html",
+      "scoringCutoff": "Completed seasons through 2025",
+      "lastCompletedSeason": 2025,
+      "researchVisibility": "private",
+      "finalLeader": "Brad Holmes",
+      "finalScore": 71.6,
+      "resultLabel": "Winning score",
+      "dimensions": 7,
+      "coreEvidenceRecords": 328,
+      "randomWeightSimulations": 300000,
+      "requiredMarkers": [
+        "Final weighted verdict",
+        "The Quinn conversion failure",
+        "Sensitivity lab"
+      ]
     }
   ]
 }
