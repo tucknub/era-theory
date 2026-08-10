@@ -1,0 +1,90 @@
+{
+  "version": "1.0.0",
+  "policy": "Real people and historical moments use rights-reviewed authentic photography. Build-time archiving self-hosts approved images. Editorial crop, mask, fade, color and background-only clipping are allowed; photographed people are never generated or reconstructed.",
+  "assets": [
+    {
+      "id": "ET-CUBS-001",
+      "slug": "theo-epstein-cubs-2016",
+      "remoteSrc": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Cubs%20President%20of%20Baseball%20Operations%20Theo%20Epstein%20talks%20to%20reporters%20before%20NLCS%20Game%206.jpg",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Cubs_President_of_Baseball_Operations_Theo_Epstein_talks_to_reporters_before_NLCS_Game_6.jpg",
+      "creator": "Arturo Pardavila III",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "caption": "Theo Epstein at Wrigley Field before 2016 NLCS Game 6",
+      "alt": "Theo Epstein speaking to reporters at Wrigley Field in 2016.",
+      "extension": "jpg",
+      "changes": "Responsive crop, tonal/color treatment, edge fade and layout masking only.",
+      "status": "approved"
+    },
+    {
+      "id": "ET-CUBS-002",
+      "slug": "kris-bryant-cubs-2016",
+      "remoteSrc": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Cubs%20third%20baseman%20Kris%20Bryant%20talks%20to%20reporters%20at%202016%20All-Star%20Game%20availability.%20%2828482577616%29%20%28cropped%29.jpg",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Cubs_third_baseman_Kris_Bryant_talks_to_reporters_at_2016_All-Star_Game_availability._(28482577616)_(cropped).jpg",
+      "creator": "Arturo Pardavila III",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "caption": "Kris Bryant during 2016 All-Star Game availability",
+      "alt": "Kris Bryant during the Chicago Cubs' 2016 championship season.",
+      "extension": "jpg",
+      "changes": "Responsive crop, tonal/color treatment and background-edge fade only.",
+      "status": "approved"
+    },
+    {
+      "id": "ET-CUBS-003",
+      "slug": "anthony-rizzo-cubs-2016",
+      "remoteSrc": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Anthony%20Rizzo%20on%20July%2016%2C%202016.jpg",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Anthony_Rizzo_on_July_16,_2016.jpg",
+      "creator": "Julie Fennell; Commons crop by UCinternational",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "caption": "Anthony Rizzo at Wrigley Field on July 16, 2016",
+      "alt": "Anthony Rizzo on base for the Chicago Cubs at Wrigley Field in 2016.",
+      "extension": "jpg",
+      "changes": "Responsive crop, tonal/color treatment and edge fade only.",
+      "status": "approved"
+    },
+    {
+      "id": "ET-CUBS-004",
+      "slug": "jake-arrieta-world-series-2016",
+      "remoteSrc": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Cubs%20starter%20Jake%20Arrieta%20delivers%20a%20pitch%20in%20the%20first%20inning%20of%20World%20Series%20Game%206.%20%2830634548581%29.jpg",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Cubs_starter_Jake_Arrieta_delivers_a_pitch_in_the_first_inning_of_World_Series_Game_6._(30634548581).jpg",
+      "creator": "Arturo Pardavila III",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "caption": "Jake Arrieta pitching in 2016 World Series Game 6",
+      "alt": "Jake Arrieta pitching for the Chicago Cubs in Game 6 of the 2016 World Series.",
+      "extension": "jpg",
+      "changes": "Responsive crop, tonal/color treatment and edge fade only.",
+      "status": "approved"
+    },
+    {
+      "id": "ET-CUBS-005",
+      "slug": "cubs-world-series-celebration-2016",
+      "remoteSrc": "https://commons.wikimedia.org/wiki/Special:Redirect/file/The%20Cubs%20celebrate%20after%20winning%20the%202016%20World%20Series.%20%2830709972906%29.jpg",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:The_Cubs_celebrate_after_winning_the_2016_World_Series._(30709972906).jpg",
+      "creator": "Arturo Pardavila III",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "caption": "Chicago Cubs celebrate after winning the 2016 World Series",
+      "alt": "Chicago Cubs players celebrating the 2016 World Series championship.",
+      "extension": "jpg",
+      "changes": "Responsive editorial crop, tonal/color treatment and edge fade only.",
+      "status": "approved"
+    },
+    {
+      "id": "ET-CUBS-006",
+      "slug": "pete-crow-armstrong-cubs-system-2022",
+      "remoteSrc": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Pete%20Crow-Armstrong%20%2852442182017%29%20%28cropped%29.jpg",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Pete_Crow-Armstrong_(52442182017)_(cropped).jpg",
+      "creator": "Erik Drost",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "caption": "Pete Crow-Armstrong with the South Bend Cubs in 2022",
+      "alt": "Pete Crow-Armstrong sliding during a South Bend Cubs game in 2022.",
+      "extension": "jpg",
+      "changes": "Responsive crop, tonal/color treatment and edge fade only.",
+      "status": "approved"
+    }
+  ]
+}
