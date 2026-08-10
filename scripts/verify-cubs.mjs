@@ -9,7 +9,7 @@ const credits=await readFile(resolve(dist,'image-credits.html'),'utf8');
 const rights=await readFile(resolve(root,'ERA_THEORY_IMAGE_RIGHTS_LEDGER.csv'),'utf8');
 const home=await readFile(resolve(dist,'index.html'),'utf8');
 const homeJs=await readFile(resolve(dist,'home.js'),'utf8');
-const researchJs=await readFile(resolve(dist,'research','research.js'),'utf8');
+const crossSportJs=await readFile(resolve(dist,'report-004-site.js'),'utf8');
 const published=(registry.reports||[]).filter(r=>r.status==='published').sort((a,b)=>String(a.number).localeCompare(String(b.number)));
 const cubs=published.find(r=>r.number==='004'&&r.slug==='cubs');if(!cubs)throw new Error('Report 004 missing from published registry.');
 if(published.length!==4)throw new Error(`Expected 4 published reports after Report 004, found ${published.length}.`);
@@ -22,6 +22,7 @@ if(!Array.isArray(manifest.assets)||manifest.assets.length!==6)throw new Error(`
 for(const asset of manifest.assets){if(asset.status!=='approved')throw new Error(`Non-approved Cubs asset: ${asset.id}`);if(!asset.localSrc?.startsWith('/assets/archive/'))throw new Error(`Cubs asset ${asset.id} lacks local source.`);await stat(resolve(dist,asset.localSrc.replace(/^\//,'')));for(const value of [asset.id,asset.creator,asset.sourcePage,asset.license,asset.changes])if(!credits.includes(value))throw new Error(`Image credits missing ${asset.id} rights metadata: ${value}`);if(!rights.includes(asset.id)||!rights.includes(asset.sourcePage))throw new Error(`Permanent rights ledger missing Cubs asset ${asset.id}.`);if(!report.includes(asset.localSrc))throw new Error(`Cubs report does not use ${asset.localSrc}.`)}
 if(!home.includes('Did the Cubs build a dynasty—or one great championship window?'))throw new Error('Server-rendered homepage fallback missing Report 004.');
 for(const marker of ['completedSeasons','published.map(renderStoryLane)','completed seasons studied'])if(!homeJs.includes(marker))throw new Error(`Homepage registry renderer missing marker: ${marker}`);
-for(const marker of ['completedSeasons','published.map','MLB'])if(!researchJs.includes(marker))throw new Error(`Research hub missing four-report/cross-sport marker: ${marker}`);
+for(const marker of ['CUBS','MLB rebuild-lifecycle model','NFL, NBA and MLB','cubs/index.html'])if(!crossSportJs.includes(marker))throw new Error(`Report 004 cross-sport enhancement missing marker: ${marker}`);
+if(!home.includes('/report-004-site.js'))throw new Error('Homepage does not load Report 004 cross-sport enhancement.');
 if(!report.includes('Real people, real photographs.'))throw new Error('Cubs authentic-image disclosure missing.');
 console.log(`Verified Report 004: ${published.length} published stories, ${totals.seasons} completed seasons, ${totals.evidence}/${totals.evidence} sourced core records, ${totals.tests.toLocaleString()} model tests and ${manifest.assets.length} rights-ledgered Cubs photographs.`);
