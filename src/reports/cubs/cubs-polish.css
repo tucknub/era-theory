@@ -1,0 +1,17 @@
+/* Final Report 004 mobile polish after browser screenshot review. */
+@media(max-width:640px){
+  .cubs-hero .hero-copy{min-width:0}
+  .cubs-hero h1{
+    font-size:clamp(2.55rem,11.7vw,3.25rem);
+    line-height:.92;
+    letter-spacing:-.045em;
+    overflow-wrap:normal;
+    word-break:normal;
+  }
+  .cubs-hero .story-deck{font-size:1rem;line-height:1.58}
+  .cubs-hero .photo-note{font-size:.79rem;line-height:1.45;margin-top:18px}
+  .cubs-hero .hero-actions{margin-top:22px}
+}
+@media(max-width:380px){
+  .cubs-hero h1{font-size:clamp(2.4rem,11.5vw,3rem)}
+}
