@@ -78,6 +78,32 @@
       "coreEvidenceRecords": 175,
       "randomWeightSimulations": 300000,
       "requiredMarkers": ["The Haliburton core wins","One asset chain kept changing shape","Can the Paul George core still win?"]
+    },
+    {
+      "number": "004",
+      "slug": "cubs",
+      "title": "Chicago Cubs Rebuild Lifecycle",
+      "publicQuestion": "Did the Cubs build a dynasty—or one great championship window?",
+      "sport": "Baseball",
+      "league": "MLB",
+      "subject": "Chicago Cubs",
+      "subtitle": "Rebuild → title → decline → second build",
+      "summary": "How Chicago built the 2016 champion, why the young core stopped regenerating and how the 2021 teardown helped finance the next contender.",
+      "fanSummary": "The Cubs built a great four-year championship window around a historically dominant 2016 team. They did not build a dynasty because replenishment and contract-control durability failed before the peak talent disappeared.",
+      "status": "published",
+      "route": "reports/cubs/index.html",
+      "methodologyRoute": "research/cubs/index.html",
+      "scoringCutoff": "Completed seasons 2012 through 2025",
+      "lastCompletedSeason": 2025,
+      "completedSeasons": 14,
+      "researchVisibility": "private",
+      "finalLeader": "Great championship window — not a dynasty",
+      "finalScore": 80.6,
+      "resultLabel": "Lifecycle score",
+      "dimensions": 8,
+      "coreEvidenceRecords": 160,
+      "randomWeightSimulations": 300000,
+      "requiredMarkers": ["great championship window","not a dynasty","The failure wasn't the peak","160 sourced records"]
     }
   ]
 }
