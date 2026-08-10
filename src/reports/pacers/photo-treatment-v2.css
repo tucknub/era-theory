@@ -32,8 +32,10 @@
 }
 .conversion-person.pg img{object-position:50% 31%;transform:scale(1.04);transform-origin:50% 34%}
 .conversion-person.hali img{object-position:50% 25%;transform:scale(1.05);transform-origin:50% 28%}
-.conversion-pair figure:first-child img{object-position:49% 42%;transform:scale(1.17);transform-origin:50% 40%}
-.conversion-pair figure:last-child img{object-position:52% 54%;transform:scale(1.42);transform-origin:52% 52%}
+/* Oladipo's face is left-of-center in the authentic source image. */
+.conversion-pair figure:first-child img{object-position:37% 42%;transform:scale(1.03);transform-origin:37% 42%}
+/* Sabonis is small in a 4032px-wide authentic action photo; crop tightly around the free-throw subject. */
+.conversion-pair figure:last-child img{object-position:42% 67%;transform:scale(2.55);transform-origin:42% 67%}
 .conversion-person figcaption,
 .conversion-pair figcaption{z-index:4}
 
@@ -54,8 +56,8 @@
 .hali-cut img{object-position:50% 24%;transform:scale(1.04);transform-origin:50% 27%}
 .siakam-cut img{object-position:50% 25%;transform:scale(1.04);transform-origin:50% 28%}
 .middle-pair{gap:12px;position:relative}
-.middle-pair img:first-child{object-position:48% 43%;transform:translateX(4%) scale(1.13);transform-origin:50% 42%}
-.middle-pair img:last-child{object-position:53% 55%;transform:translateX(-4%) scale(1.34);transform-origin:53% 53%}
+.middle-pair img:first-child{object-position:37% 42%;transform:translateX(3%) scale(1.03);transform-origin:37% 42%}
+.middle-pair img:last-child{object-position:42% 67%;transform:translateX(-3%) scale(1.82);transform-origin:42% 67%}
 
 /* Slightly more room around the photographic side so the smoother crops breathe. */
 @media(min-width:981px){
@@ -67,8 +69,10 @@
   .conversion-hero{height:430px}
   .conversion-person{border-radius:34px 34px 10px 10px}
   .conversion-pair figure{border-radius:28px 28px 10px 10px}
-  .conversion-pair figure:first-child img{transform:scale(1.2)}
-  .conversion-pair figure:last-child img{transform:scale(1.48)}
+  .conversion-pair figure:first-child img{object-position:37% 42%;transform:scale(1.06);transform-origin:37% 42%}
+  .conversion-pair figure:last-child img{object-position:42% 67%;transform:scale(2.7);transform-origin:42% 67%}
   .chapter-photo img,.middle-pair img{border-radius:24px 24px 10px 10px}
   .middle-pair{gap:8px}
+  .middle-pair img:first-child{object-position:37% 42%;transform:translateX(2%) scale(1.04);transform-origin:37% 42%}
+  .middle-pair img:last-child{object-position:42% 67%;transform:translateX(-2%) scale(1.9);transform-origin:42% 67%}
 }
