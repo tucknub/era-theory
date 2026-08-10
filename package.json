@@ -2,10 +2,10 @@
   "name": "era-theory",
   "version": "1.0.0",
   "private": true,
-  "description": "Era Theory — research-driven sports leadership reports. Colts is Report 001; Detroit Lions is Report 002.",
+  "description": "Era Theory — evidence-first sports stories across NFL and NBA. Reports 001–003 cover the Colts, Lions and Pacers.",
   "scripts": {
-    "build": "node scripts/build.mjs && node scripts/build-report-002.mjs",
-    "verify": "node scripts/verify.mjs && node scripts/verify-cutouts.mjs && node scripts/verify-lions.mjs",
+    "build": "node scripts/build.mjs && node scripts/build-report-002.mjs && node scripts/build-report-003.mjs",
+    "verify": "node scripts/verify.mjs && node scripts/verify-cutouts.mjs && node scripts/verify-lions.mjs && node scripts/verify-pacers.mjs",
     "new-report": "node scripts/new-report.mjs",
     "start": "python3 -m http.server 4173 -d dist"
   }
