@@ -13,9 +13,9 @@ const rights=await readFile(resolve(root,'ERA_THEORY_IMAGE_RIGHTS_LEDGER.csv'),'
 const published=(registry.reports||[]).filter(r=>r.status==='published').sort((a,b)=>String(a.number).localeCompare(String(b.number)));
 const pacers=published.find(r=>r.number==='003'&&r.slug==='pacers');
 if(!pacers)throw new Error('Report 003 missing from published registry.');
-if(published.length!==3)throw new Error(`Expected 3 published reports after Report 003, found ${published.length}.`);
+if(published.length<3)throw new Error(`Report 003 requires at least 3 published reports; found ${published.length}.`);
 const totals={seasons:published.reduce((s,r)=>s+(Number(r.completedSeasons)||0),0),evidence:published.reduce((s,r)=>s+(Number(r.coreEvidenceRecords)||0),0),tests:published.reduce((s,r)=>s+(Number(r.randomWeightSimulations)||0),0)};
-if(totals.seasons!==69||totals.evidence!==904||totals.tests!==900000)throw new Error(`Unexpected cross-sport totals: ${JSON.stringify(totals)}`);
+if(totals.seasons<69||totals.evidence<904||totals.tests<900000)throw new Error(`Published library regressed below Report 003 baseline: ${JSON.stringify(totals)}`);
 for(const marker of ['The Haliburton core wins','83.6','79.3','59.9','One asset chain kept changing shape','Can the Paul George core still win?','175 sourced records','300,000 random-weight tests']) if(!report.includes(marker))throw new Error(`Pacers report missing marker: ${marker}`);
 for(const marker of ['175 / 175','Eight NBA questions','58.4%','64.2%','Zubac trade is unresolved']) if(!method.includes(marker))throw new Error(`Pacers methodology missing marker: ${marker}`);
 if(/docs\.google\.com\/spreadsheets/i.test(report+method))throw new Error('Private Google Sheet URL leaked into public Pacers HTML.');
@@ -31,4 +31,4 @@ if(!home.includes('How did the Pacers keep turning one star into the next?'))thr
 for(const marker of ['completedSeasons','published.map(renderStoryLane)','completed seasons studied'])if(!homeJs.includes(marker))throw new Error(`Cross-sport homepage code missing marker: ${marker}`);
 for(const marker of ['completedSeasons','eight-dimension NBA','published.map'])if(!researchJs.includes(marker))throw new Error(`Cross-sport research hub code missing marker: ${marker}`);
 if(!report.includes('Real people, real photographs.'))throw new Error('Pacers authentic-image disclosure missing.');
-console.log(`Verified Report 003: 3 published stories, ${totals.seasons} completed seasons, ${totals.evidence}/${totals.evidence} sourced core records, ${totals.tests.toLocaleString()} model tests, ${manifest.assets.length} rights-ledgered Pacers photographs, privacy guards, final scores and cross-sport registry behavior.`);
+console.log(`Verified Report 003 remains intact inside a ${published.length}-story library: 175 sourced Pacers records, 300,000 Pacers model tests, ${manifest.assets.length} rights-ledgered photographs and no private-workbook leak.`);
