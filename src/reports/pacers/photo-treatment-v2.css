@@ -34,8 +34,8 @@
 .conversion-person.hali img{object-position:50% 25%;transform:scale(1.05);transform-origin:50% 28%}
 /* Oladipo's face is left-of-center in the authentic source image. */
 .conversion-pair figure:first-child img{object-position:37% 42%;transform:scale(1.03);transform-origin:37% 42%}
-/* Sabonis is small in a 4032px-wide authentic action photo; crop tightly around the free-throw subject. */
-.conversion-pair figure:last-child img{object-position:42% 67%;transform:scale(2.55);transform-origin:42% 67%}
+/* Sabonis is small in a wide action frame. The portrait frame already provides the horizontal crop; only a modest vertical zoom is needed. */
+.conversion-pair figure:last-child img{object-position:42% 62%;transform:scale(1.55);transform-origin:42% 62%}
 .conversion-person figcaption,
 .conversion-pair figcaption{z-index:4}
 
@@ -70,7 +70,7 @@
   .conversion-person{border-radius:34px 34px 10px 10px}
   .conversion-pair figure{border-radius:28px 28px 10px 10px}
   .conversion-pair figure:first-child img{object-position:37% 42%;transform:scale(1.06);transform-origin:37% 42%}
-  .conversion-pair figure:last-child img{object-position:42% 67%;transform:scale(2.7);transform-origin:42% 67%}
+  .conversion-pair figure:last-child img{object-position:42% 62%;transform:scale(1.65);transform-origin:42% 62%}
   .chapter-photo img,.middle-pair img{border-radius:24px 24px 10px 10px}
   .middle-pair{gap:8px}
   .middle-pair img:first-child{object-position:37% 42%;transform:translateX(2%) scale(1.04);transform-origin:37% 42%}
