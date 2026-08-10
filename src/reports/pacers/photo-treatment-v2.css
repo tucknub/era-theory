@@ -1,0 +1,74 @@
+/* Final authentic-photo treatment for Report 003.
+   Keep photographed people as source pixels; this layer only changes crop, framing,
+   edge fades and layout integration. No synthetic people or reconstructed faces. */
+
+/* Hero portraits: replace hard polygon clipping with smooth editorial portrait frames. */
+.conversion-person,
+.conversion-pair figure{
+  overflow:hidden;
+  isolation:isolate;
+  border:1px solid rgba(255,255,255,.08);
+  background:#061421;
+  box-shadow:0 22px 46px rgba(0,0,0,.30);
+}
+.conversion-person{border-radius:46% 46% 18px 18px / 10% 10% 18px 18px}
+.conversion-pair figure{border-radius:42% 42% 16px 16px / 9% 9% 15px 15px}
+.conversion-person::after,
+.conversion-pair figure::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:2;
+  pointer-events:none;
+  background:linear-gradient(180deg,transparent 0%,transparent 67%,rgba(3,17,31,.18) 78%,#07111b 100%);
+}
+.conversion-person img,
+.conversion-pair img{
+  clip-path:none!important;
+  -webkit-clip-path:none!important;
+  mask-image:none!important;
+  -webkit-mask-image:none!important;
+  filter:saturate(.94) contrast(1.045)!important;
+}
+.conversion-person.pg img{object-position:50% 31%;transform:scale(1.04);transform-origin:50% 34%}
+.conversion-person.hali img{object-position:50% 25%;transform:scale(1.05);transform-origin:50% 28%}
+.conversion-pair figure:first-child img{object-position:49% 42%;transform:scale(1.17);transform-origin:50% 40%}
+.conversion-pair figure:last-child img{object-position:52% 54%;transform:scale(1.42);transform-origin:52% 52%}
+.conversion-person figcaption,
+.conversion-pair figcaption{z-index:4}
+
+/* Chapter photography: authentic full photographs with soft bottom dissolution rather
+   than jagged faux silhouettes. This keeps faces/bodies exact and makes the photography
+   feel intentional in the editorial layout. */
+.chapter-photo img,
+.middle-pair img{
+  clip-path:none!important;
+  -webkit-clip-path:none!important;
+  border-radius:38px 38px 14px 14px;
+  box-shadow:0 24px 54px rgba(0,0,0,.28);
+  filter:saturate(.94) contrast(1.035)!important;
+  mask-image:linear-gradient(180deg,#000 0%,#000 78%,rgba(0,0,0,.92) 84%,transparent 100%)!important;
+  -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 78%,rgba(0,0,0,.92) 84%,transparent 100%)!important;
+}
+.pg-cut img{object-position:50% 28%;transform:scale(1.03);transform-origin:50% 30%}
+.hali-cut img{object-position:50% 24%;transform:scale(1.04);transform-origin:50% 27%}
+.siakam-cut img{object-position:50% 25%;transform:scale(1.04);transform-origin:50% 28%}
+.middle-pair{gap:12px;position:relative}
+.middle-pair img:first-child{object-position:48% 43%;transform:translateX(4%) scale(1.13);transform-origin:50% 42%}
+.middle-pair img:last-child{object-position:53% 55%;transform:translateX(-4%) scale(1.34);transform-origin:53% 53%}
+
+/* Slightly more room around the photographic side so the smoother crops breathe. */
+@media(min-width:981px){
+  .story-chapter.photo-chapter{grid-template-columns:105px minmax(350px,.96fr) minmax(420px,1.04fr)}
+  .story-chapter.photo-chapter.reverse{grid-template-columns:105px minmax(420px,1.04fr) minmax(350px,.96fr)}
+}
+
+@media(max-width:640px){
+  .conversion-hero{height:430px}
+  .conversion-person{border-radius:34px 34px 10px 10px}
+  .conversion-pair figure{border-radius:28px 28px 10px 10px}
+  .conversion-pair figure:first-child img{transform:scale(1.2)}
+  .conversion-pair figure:last-child img{transform:scale(1.48)}
+  .chapter-photo img,.middle-pair img{border-radius:24px 24px 10px 10px}
+  .middle-pair{gap:8px}
+}
