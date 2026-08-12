@@ -6,20 +6,20 @@ const sourcePath=resolve(import.meta.dirname,'visual-qa-v4.mjs');
 const runtimePath=resolve(import.meta.dirname,'.visual-qa-v5-runtime.mjs');
 let source=await readFile(sourcePath,'utf8');
 
-// Preserve the established four-report browser suite; only replace Report 004's
-// audited research expectations and the aggregate evidence total they affect.
+// Preserve the established four-report browser suite; replace only Report 004's
+// final audited research expectations and the aggregate evidence total they affect.
 source=source
-  .replaceAll("'1064'","'1039'")
-  .replaceAll('1064 / 1064','1039 / 1039')
-  .replaceAll('1,064','1,039')
-  .replaceAll("'160'","'135'")
-  .replaceAll('160 / 160','135 / 135')
-  .replaceAll('Great championship window','Championship lifecycle')
+  .replaceAll("'1064'","'1090'")
+  .replaceAll('1064 / 1064','1090 / 1090')
+  .replaceAll('1,064','1,090')
+  .replaceAll("'160'","'186'")
+  .replaceAll('160 / 160','186 / 186')
+  .replaceAll('Great championship window','Historic championship window')
   .replace(
     "const expectations={published:['80.6','Championship-caliber rebuild / great window'],title:['82.4','Championship-caliber rebuild / great window'],dynasty:['77.6','Successful but incomplete lifecycle'],development:['74.9','Successful but incomplete lifecycle'],recovery:['79.6','Successful but incomplete lifecycle']};",
-    "const expectations={published:['80.7','Championship lifecycle — not a dynasty'],title:['80.0','Championship lifecycle — not a dynasty'],dynasty:['77.3','Strong but incomplete lifecycle'],development:['78.5','Strong but incomplete lifecycle'],recovery:['79.3','Strong but incomplete lifecycle']};"
+    "const expectations={published:['83.7','Historic championship window — not a dynasty'],title:['83.1','Championship-successful lifecycle'],dynasty:['80.7','Championship-successful lifecycle — historical dynasty gate still fails'],development:['77.6','Strong but incomplete lifecycle'],recovery:['81.3','Championship-successful lifecycle']};"
   )
-  .replace('Visual QA v4 passed:','Visual QA v5 passed: audited Cubs model;');
+  .replace('Visual QA v4 passed:','Visual QA v5 passed: final Cubs audit;');
 
 for(const stale of ["published:['80.6'","'1064'",'1064 / 1064',"'160'",'160 / 160','Great championship window']){
   if(source.includes(stale))throw new Error(`Visual QA v5 still contains stale Report 004 expectation: ${stale}`);
