@@ -4,7 +4,7 @@
   "private": true,
   "description": "Era Theory — evidence-first sports stories across NFL, NBA and MLB. Reports 001–004 cover the Colts, Lions, Pacers and Cubs.",
   "scripts": {
-    "build": "node scripts/build.mjs && node scripts/build-report-002.mjs && node scripts/build-report-003.mjs && node scripts/build-report-004.mjs",
+    "build": "node scripts/build.mjs && node scripts/build-report-002.mjs && node scripts/build-report-003.mjs && node scripts/build-report-004.mjs && node scripts/finalize-cubs-audit-copy.mjs",
     "verify": "node scripts/verify.mjs && node scripts/verify-cutouts.mjs && node scripts/verify-lions.mjs && node scripts/verify-pacers.mjs && node scripts/verify-cubs.mjs",
     "new-report": "node scripts/new-report.mjs",
     "start": "python3 -m http.server 4173 -d dist"
