@@ -64,6 +64,11 @@ async function injectMetadata(relativePath, metadata) {
   const path = resolve(dist, relativePath);
   let html = await readFile(path, 'utf8');
   if (!html.includes('</head>')) throw new Error(`Cannot inject metadata into ${relativePath}: missing </head>.`);
+  html = html
+    .replace(/\s*<link\s+rel=["']canonical["'][^>]*>\s*/gi, '\n')
+    .replace(/\s*<meta\s+property=["']og:[^"']+["'][^>]*>\s*/gi, '\n')
+    .replace(/\s*<meta\s+name=["']twitter:[^"']+["'][^>]*>\s*/gi, '\n')
+    .replace(/\s*<script\s+type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>\s*/gi, '\n');
   html = html.replace('</head>', `${metadataBlock(metadata)}\n</head>`);
   await writeFile(path, html);
 }
